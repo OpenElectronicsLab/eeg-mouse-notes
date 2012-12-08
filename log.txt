@@ -109,6 +109,7 @@ Ideas to try
  * Use two independent channels with raw amplitude.  This may be EMG rather
    than EEG, but that may be easier to control.  The lack of filtering may
    reduce latency.
+ * Try narrower bands; may need better/faster bandpass filters.
  * Try wrapping signals wires with ground wire to reduce crosstalk on
    STM32F407.
  * Try porting to Arduino Due.
