@@ -1,0 +1,119 @@
+Log
+===
+
+2011-11-26 we started designing the board.
+Design ideas included:
+ * focus on through-hole components with adequate space between components
+   to make it easier to fabricate for those without SMT experience
+ * start with an off-the-shelf arduino for the controller logic to
+   to simplify design/fabrication
+ * use an off-board level-shifter to simplify design/fabrication
+ * reducing our board needs to little more than a break-out board
+   for the ads1298
+ * used unipolar (0 to 5V) analog supply rather than bipolar
+   (-2.5V to 2.5V) to simplify design/fabrication
+ * choose sintered silver electrodes and shielded cables to
+   reduce chances that poor hardware choices would cause problems
+ * choose ADS1298 as an existed integrated solution to
+   reduce chances that poor hardware choices would cause problems
+ * decoupling capacitors were placed as close as possible to the chip, with
+   smaller capacitors places closer than larger when needed to reduce
+   inductance of the traces connecting to the chip.
+ * the two wires in an analog differential signal were routed as closely
+   together as possible to reduce asymmetrical noise
+ * each pair of signal wires were placed as far apart as feasible to
+   reduce crosstalk between channels
+ * analog signals were separated from digital signals to reduce crosstalk
+   large ground and power planes were used to reduce ground/power inductance
+   and provide some shielding
+
+2012-01-09 Design completed and sent to Gold Phoenix PCB for fabrication
+    http://www.goldphoenixpcb.com/
+
+2012-02-19 Transitioned from Arduino IDE to Makefile based build because
+    authors were more comfortable with command line tools
+
+2012-03-04 Success reading data (test signals) from ADS1298.  Test signals
+    created by setting INT_TEST bit of CONFIG2 register and the mux bits of
+    each of the CHxSET registers to 101.
+
+2012-03-28 Started STM32F407 port as a potential long-term platform capable
+    of on-board signal processing and to replicate results on a different
+    platform to verify that the Arduino was not a source of sampling
+    problems.
+
+2012-05-12 First electroencephalogram (EEG) samples and Fourier transforms.
+    Tested beta wave activity with eyes open and eyes closed.
+
+2012-05-19 Noted that electro-occulogram (EOG) and electro-myogram (EMG) are
+    larger in magnitude than the EEG signals.
+
+2012-05-26 Created a window showing cursor location that could be controlled.
+    Noticed gradual drift in signal over time, so used difference from moving
+    average as a signal.
+
+2012-06-16 To get two independent channels for X and Y movement, we considered
+    using the same frequency band in two different pairs of electrodes, using
+    the same frequency band with two pairs with one shared electrode, and
+    using a single pair of electrodes with two different frequency bands.
+
+    When choosing frequency bands, we tried to choose frequencies that were
+    separated in frequency space, not multiples of each other, and showed
+    resting activity.  On the basis of this we choose a band around 11 Hz
+    (alpha) and 23 Hz (beta).
+
+    Set up infinite impulse response (IIR) filters for the two
+    frequency bands.  Used scipy signal design routines to
+    generate coefficient.
+
+2012-06-23 More careful choice of filters.  Looked at Elliptical and
+    Butterworth filters, choose filter by inspecting graphs.
+
+2012-06-? Switched from F0 electrode as ground to sitting on a penny/5 euro
+    cent as ground.
+
+2012-07-07 Discovered error in datasheet for STM32F4Discovery board - docs
+    say PE2 for the chip select of LIS302, but should be PE3; the schematic
+    is correct.
+
+2012-08-04 Discovered that crosstalk between SPI clock and signal wires
+    was corrupting our communications with the ADS1298; tried adding
+    resistors to signal lines, moving signals, and shielding to reduce
+    crosstalk, with some success.
+
+2012-08-11 Returned focus to the Arduino; STM32F4 was working, but
+    temperamental due to crosstalk.  Changed ardunio SPI clock to
+    2 MHz instead of 4 MHz for clearer communication.
+
+2012-09-15 Increased pass-band width and decreased stop band to reduce
+    latency below 1/2 second.
+
+2012-09-22 Added color to cursor to show velocity, and added dead-zone
+    to reduce unwanted movements.
+
+2012-11-08 To verify that our perception of control was grounded in
+    reality, we designed an obstacle course, scoring system,
+    and bootstrapped significance testing.
+
+2012-12-01 Created a baseline frequency as an alternative to a running
+    average.
+
+2012-12-08 Created log file, filling in previous history based on git log
+    and shared memory.
+
+
+Ideas to try
+============
+ * Try using driven right leg to see if that improves signals - we may
+   be getting clipping of signals by using the ground electrode.
+ * Use two independent channels with raw amplitude.  This may be EMG rather
+   than EEG, but that may be easier to control.  The lack of filtering may
+   reduce latency.
+ * Try wrapping signals wires with ground wire to reduce crosstalk on
+   STM32F407.
+ * Try porting to Arduino Due.
+
+
+Problem list
+============
+ * Improve control of cursor.
