@@ -101,6 +101,29 @@ Design ideas included:
 2012-12-08 Created log file, filling in previous history based on git log
     and shared memory.
 
+2012-12-15 used two sets of signal inputs connected to KMS.
+    Initially:
+        * INP1 located approximately at location F7
+        * INP2 located approximately at location F8
+        * INN1 and INN2 shared connector located at "G" or "Fp"
+        * GROUND was wired to a penny being sat upon.
+    Looked at raw amplitude, however the 60Hz was dominant.
+    Next, we added a broad lowpass filter for signals less than 30Hz.
+    This resulted in an obvious EKG pattern.
+    Next, we moved the penny from GROUND to RLDOUT.
+    Eye movement was very obvious, as was teeth clenching.
+    Moved electrodes:
+        * INP1 moved to approximately at location FT7
+        * INP2 moved to approximately at location FT8
+    This did not eliminate nor greatly reduce the eye movement effect.
+    Next, changed filter to 15-35 bandpass to remove EOG.
+    EOG effect now no longer obvious.
+    Ran trial with:
+        * Vertical Sensitivity of 0.05
+        * Horizontal Sensitivity of 0.10
+        * Horizontal and Vertical Baselines of 0.00005
+    Trial scored a mean distance of 44!
+
 
 Ideas to try
 ============
