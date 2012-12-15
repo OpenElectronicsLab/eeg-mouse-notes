@@ -127,11 +127,8 @@ Design ideas included:
 
 Ideas to try
 ============
- * Try using driven right leg to see if that improves signals - we may
-   be getting clipping of signals by using the ground electrode.
- * Use two independent channels with raw amplitude.  This may be EMG rather
-   than EEG, but that may be easier to control.  The lack of filtering may
-   reduce latency.
+ * Allow sensitivity and baseline to be specified on command line.
+ * Practice.
  * Try narrower bands; may need better/faster bandpass filters.
  * Try wrapping signals wires with ground wire to reduce crosstalk on
    STM32F407.
