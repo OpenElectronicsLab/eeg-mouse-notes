@@ -125,8 +125,25 @@ Design ideas included:
     Trial scored a mean distance of 44!
 
 
+2012-12-22 Practiced a bit with EMG based control, started rebuilding and
+    diagnosing/repairing board after move.  Combinations tried:
+    Target               Common          IN1P             IN2P
+    ---------------------------------------------
+    Temporalis           F0              FT7              FT8
+    Frontalis            F0              Fp1              Fp2
+    Orbicularis oculi    F0        2 to 3 o' clock (lateral) margin of
+                                   orbit of skull
+    Board diagnosis notes:
+    Unable to get signals from board (i.e. all 0s or 1s for a given sample
+    with strange alternation between samples)
+    Wiggling the south header changed the signal (producing some samples
+    which were valid); we suspect that this header needs resoldering.
+
+
 Ideas to try
 ============
+ * Try controlling with big muscles, e.g. biceps brachialis,
+   adductor pollicis.
  * Allow sensitivity and baseline to be specified on command line.
  * Practice.
  * Try narrower bands; may need better/faster bandpass filters.
@@ -137,4 +154,5 @@ Ideas to try
 
 Problem list
 ============
+ * NL board not working reliably; probably damaged in move.
  * Improve control of cursor.
