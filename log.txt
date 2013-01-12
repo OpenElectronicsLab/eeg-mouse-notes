@@ -164,5 +164,4 @@ Ideas to try
 
 Problem list
 ============
- * NL board not working reliably; probably damaged in move.
  * Improve control of cursor.
