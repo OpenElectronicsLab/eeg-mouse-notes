@@ -139,6 +139,8 @@ Design ideas included:
     Wiggling the south header changed the signal (producing some samples
     which were valid); we suspect that this header needs resoldering.
 
+2013-01-12 found problem with nl board: CS was mistakenly jumped to HIGH
+
 
 Ideas to try
 ============
