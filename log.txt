@@ -139,7 +139,15 @@ Design ideas included:
     Wiggling the south header changed the signal (producing some samples
     which were valid); we suspect that this header needs resoldering.
 
-2013-01-12 found problem with nl board: CS was mistakenly jumped to HIGH
+2013-01-12
+    Found and fixed problem with nl board.
+      (CS was mistakenly jumped to HIGH)
+
+    Tried changing SPI.setClockDivider(SPI_CLOCK_DIV8) to DIV4 and
+    DIV2. Both worked for US board connected through the digital isolator
+    however, with the NL board, connected through simple level-shifters,
+    the "magic" was consistently a "4" rather than a "C", so we left it
+    at DIV8.
 
 
 Ideas to try
