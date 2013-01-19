@@ -164,6 +164,13 @@ Design ideas included:
     results:
         * 49 pixels
 
+    Not usable results with NL board. To verify that the level-shifter
+    was not the root cause, the US setup was changed from using the digital
+    isolator to the level-shifter. US Board with level-shifter and
+    SPI_CLOCK_DIV16 gave consistently good magic, however the resuts of two
+    trials were 75 and 62 pixels. We concluded that using the level-shifter
+    is fine and thus not the core problem with NL board control.
+
 Ideas to try
 ============
  * Try controlling with big muscles, e.g. biceps brachialis,
