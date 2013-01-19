@@ -149,6 +149,20 @@ Design ideas included:
     the "magic" was consistently a "4" rather than a "C", so we left it
     at DIV8.
 
+2013-01-19
+    Tried another trial of EMG control US board:
+        * RLDOUT was wired to a penny
+        * INP1 approximately at location FT7
+        * INP2 approximately at location FT8
+        * INN1 and INN2 shared connector located at "G" or "Fp"
+        * ./broad-wired.sh
+        * Horizontal sensitivity: 0.1
+        * Vertical sensitivity to 0.25
+        * Baseline: Manual
+        * Vert baseline: 0.00005
+        * Horz baseline: 0.00005
+    results:
+        * 49 pixels
 
 Ideas to try
 ============
