@@ -160,7 +160,8 @@ Ideas to try
  * Try wrapping signals wires with ground wire to reduce crosstalk on
    STM32F407.
  * Try porting to Arduino Due.
-
+ * Try designing active electrodes
+ * Add real time spectrogram
 
 Problem list
 ============
