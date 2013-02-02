@@ -171,8 +171,24 @@ Design ideas included:
     trials were 75 and 62 pixels. We concluded that using the level-shifter
     is fine and thus not the core problem with NL board control.
 
+2013-02-02 * Try porting to Arduino Due.  -- in progress
+    Connected ADS1298 breakout board to Adruino Due (both with digital
+    isolator and directly) with some success.
+        * Data was collected via the programming port.
+        * The DUE requires using the SPI pins, rather than pins 50,51,52.
+        * The baud rate had to be dropped to 115200 otherwise we just
+          saw all FF from the board.
+        * We still saw approximately one frame per second which had
+          an unusual value in the first 24 bytes.
+        * We were not able to communicate with the DUE via the SerialUSB port.
+    In order to get the project to build with the Arduino IDE, we had to
+    remove dashes from the source file names.
+    Replacing dashes with underscores worked.
+
 Ideas to try
 ============
+ * Investigate corralating signals from different electrodes, rather than
+   simply getting signals in the target band(s) from a singel pair.
  * Try controlling with big muscles, e.g. biceps brachialis,
    adductor pollicis.
  * Allow sensitivity and baseline to be specified on command line.
@@ -180,10 +196,19 @@ Ideas to try
  * Try narrower bands; may need better/faster bandpass filters.
  * Try wrapping signals wires with ground wire to reduce crosstalk on
    STM32F407.
- * Try porting to Arduino Due.
  * Try designing active electrodes
  * Add real time spectrogram
 
 Problem list
 ============
  * Improve control of cursor.
+ * Communicate with DUE via SerialUSB.
+ * Diagnose the unusual first 24 bits values.
+ * seek and destroy dash-in-filename bug in Arduino IDE.
+
+Eventually
+==========
+ * While we are reasonably happy to operate the EEG ourselves during
+   prototyping with minimal precautions, a final product must include
+   isolation to protect the wearer from electrocution.
+
