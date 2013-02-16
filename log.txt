@@ -189,6 +189,7 @@ Ideas to try
 ============
  * Investigate corralating signals from different electrodes, rather than
    simply getting signals in the target band(s) from a singel pair.
+ * Switch to use USB serial port on Arduino Due.
  * Try controlling with big muscles, e.g. biceps brachialis,
    adductor pollicis.
  * Allow sensitivity and baseline to be specified on command line.
