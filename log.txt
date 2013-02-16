@@ -185,8 +185,19 @@ Design ideas included:
     remove dashes from the source file names.
     Replacing dashes with underscores worked.
 
+2013-02-16 control mouse with Arduino Due.
+    * still saw bad magic from time-to-time
+    * still saw some data with big spikes
+    * still saw unusual values in first 24 bits even with good magic
+    * we suspect spikes are result of data corruption
+    * after filtering bad-magic at on the Arduino, we no longer saw
+      bad magic at the desktop computer, thus the data does not seem to get
+      corrupted between the arduino and the computer.
+    * control with Due seemed not as good as with the Mega.
+
 Ideas to try
 ============
+ * try median smoothing with a 3 point window
  * Investigate corralating signals from different electrodes, rather than
    simply getting signals in the target band(s) from a singel pair.
  * Switch to use USB serial port on Arduino Due.
@@ -205,6 +216,7 @@ Problem list
  * Improve control of cursor.
  * Communicate with DUE via SerialUSB.
  * Diagnose the unusual first 24 bits values.
+ * separate out view and model logic in window.pl.
  * seek and destroy dash-in-filename bug in Arduino IDE.
 
 Eventually
