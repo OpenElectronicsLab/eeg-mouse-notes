@@ -195,11 +195,25 @@ Design ideas included:
       corrupted between the arduino and the computer.
     * control with Due seemed not as good as with the Mega.
 
+2013-03-02 tested sense of instantaneous response with battery
+    Connected the ADS1298 breakout borad to Arduino Due
+    Connected a battery ground to RLDOUT and IN1N
+    Connected IN1P via a resistor and a jumper to battery
+    Observed "seemingly instantaneous" cursor jumps when changed
+      whether jumpers connected to battery
+
+
 Ideas to try
 ============
+ * Redesign board with combined isolator, Arduino, and ADS129x
+   to reduce noise and serve as a programmable general purpose
+   break-out board
+ * Simulate bit error by creating a fake data series of all zeros
+   with occasional ones and look to see how our filter responds to
+   see if it looks like the noise we see while testing
  * try median smoothing with a 3 point window
- * Investigate corralating signals from different electrodes, rather than
-   simply getting signals in the target band(s) from a singel pair.
+ * Investigate correlating signals from different electrodes, rather than
+   simply getting signals in the target band(s) from a single pair.
  * Switch to use USB serial port on Arduino Due.
  * Try controlling with big muscles, e.g. biceps brachialis,
    adductor pollicis.
@@ -218,6 +232,9 @@ Problem list
  * Diagnose the unusual first 24 bits values.
  * separate out view and model logic in window.pl.
  * seek and destroy dash-in-filename bug in Arduino IDE.
+ * Set up the arduino to work as a mouse, perhaps initially with
+   synthetic input rather than EEG/EMG.
+ * Revisit filter design for RLD/BIAS circuit
 
 Eventually
 ==========
