@@ -202,6 +202,13 @@ Design ideas included:
     Observed "seemingly instantaneous" cursor jumps when changed
       whether jumpers connected to battery
 
+2013-05-05 Continued work on Rev1 schematic
+    An open question is how to drive the clock of the ADS129x from
+      the SAM3X chip. The SAM3X presumably provides 84MHz and ways
+      to divide that. The ADS129x needs 2MHz. We should be able to
+      use the Timer Counters, but we want to make sure that we do
+      not use counters which would conflict with the Arduino
+      libraries.
 
 Ideas to try
 ============
