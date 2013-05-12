@@ -210,6 +210,25 @@ Design ideas included:
       not use counters which would conflict with the Arduino
       libraries.
 
+2013-05-12 Incorporate suggestions from Chris Rorden.
+   Also, test the Adruino Due with powering down unused channels
+     on the ADS1298.
+   Arduino software on the (ustable) 1.5 branch was broken: showing
+     drawing errors which made the tool extremely difficult to use,
+     and it seemed very flaky when uploading code to the Arduino.
+     We worked around this by using commit 8eadd48 which was from
+     about a month prior.
+   As we do not have a commandline build process yet for the Due,
+     we also ran into the existing issue where dashes in names must
+     be replaced by underscores, and the project layout requires
+     the main firmware file to be named the same as the directory
+     and have the ".ino" extension instead of ".cpp".
+  For the Due, the "SPI.setClockDivider" needs to be changed from
+     the SPI_CLOCK_DIV8 to a two argument pin number and 42 to get
+     a 2MHz clock. We used pin number 14.
+  Also, we had problems with the baudrate of 230400; these problems
+     went away when using 115200.
+
 Ideas to try
 ============
  * Redesign board with combined isolator, Arduino, and ADS129x
@@ -236,6 +255,10 @@ Problem list
 ============
  * Improve control of cursor.
  * Communicate with DUE via SerialUSB.
+   Given the problems we've seen with high baudrates using the
+   Arduino Due programming port, we probably need to set aside
+   time to address solutions/alternatives before having the
+   next version of the board built.
  * Diagnose data corruption. (suspect crosstalk)
  * separate out view and model logic in window.pl.
  * seek and destroy dash-in-filename bug in Arduino IDE.
