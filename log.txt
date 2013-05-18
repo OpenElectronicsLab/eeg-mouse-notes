@@ -229,6 +229,27 @@ Design ideas included:
   Also, we had problems with the baudrate of 230400; these problems
      went away when using 115200.
 
+2013-05-18 rev1 schematic essential connections complete
+  We are not 100% certain that we will be able to drive the ADS
+    2MHz clock from the SAM3X without conflicting with the
+    Arduino libraries.
+  In the SAM3X "Series Complete" pdf, section 37.6.11.2,
+    there is an explaintion of how the timer-counter
+    peripheral can be used to generate a square wave of a given
+    frequency.  By setting the counter clock to the master clock
+    (84 MHz) divided by 2, and then setting the timer register C
+    to reset the timer every 21 clocks, we can derive our 2 MHz
+    clock.  We can then use either timer register A or B to toggle
+    one of the pins approximately half-way through the cycle (e.g.
+    switch to high after 10 cycles).
+  Our choice of output pins from the timers are limited, however,
+    to those listed in section 37.5.1.  Timer-counter 1 does not have
+    any output pins available on the 144 pin package we are using; thus
+    we are limited to timer-counter 0 or 2.  We chose TC0 signal TIOA1
+    somewhat arbitarily, as it was close to some of the other signal
+    lines to the ADS129x.  It was labeled as AD7 in the arduino
+    schematic, which we do not think we will need for other purposes.
+
 Ideas to try
 ============
  * Redesign board with combined isolator, Arduino, and ADS129x
