@@ -250,6 +250,12 @@ Design ideas included:
     lines to the ADS129x.  It was labeled as AD7 in the arduino
     schematic, which we do not think we will need for other purposes.
 
+2013-05-25 elected to create a separate schematic and board for EEG
+    connectors. Decided to have the BIASOUT vs. VIRTGND selected in
+    software to avoid need for more physical space and to consitently
+    record settings with data. This would be doable with a physical
+    switch, but no real need to change this mid-operation.
+
 Ideas to try
 ============
  * Redesign board with combined isolator, Arduino, and ADS129x
