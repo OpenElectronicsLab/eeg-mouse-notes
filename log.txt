@@ -274,6 +274,7 @@ Ideas to try
 
 Problem list
 ============
+ * Find and address all MAYBE notes in schematic.
  * Improve control of cursor.
  * Communicate with DUE via SerialUSB.
    Given the problems we've seen with high baudrates using the
