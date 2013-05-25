@@ -255,6 +255,15 @@ Design ideas included:
     software to avoid need for more physical space and to consitently
     record settings with data. This would be doable with a physical
     switch, but no real need to change this mid-operation.
+  Page 48 of the ADS1299 datasheet shows that we can use switching
+    internal to the ADS for driving a VIRTGND.
+  Added LEDs to daughter board controlled by four 74HC595 chips.
+  At 560 Ohms, we probably do not want to light up all of the LEDs
+    at once, because that will draw a lot of current. We will only
+    light either a yellow or a green per wire, depending on weather
+    the wire is intended for use and disconnected (yellow) or connected
+    (green) ... channels which are set to SHORTED will not have either
+    LED lit.
 
 Ideas to try
 ============
