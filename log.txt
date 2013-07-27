@@ -309,3 +309,9 @@ Eventually
    prototyping with minimal precautions, a final product must include
    isolation to protect the wearer from electrocution.
 
+ * replace pins with jumpers in rev1 schematic
+ * replace L with FB (device - filter) for ferrite beads in rev1 sch
+
+ * review calculating capacitance delay
+
+ * discuss firmware merging with Chris Rorden
