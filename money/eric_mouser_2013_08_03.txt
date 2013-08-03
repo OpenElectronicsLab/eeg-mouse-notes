@@ -1,0 +1,320 @@
+Bill To:
+HERMAN, ERIC
+NETHERLANDS
+
+Ship To:
+ERIC HERMAN
+NETHERLANDS
+
+----+-----------------------------+--------+---------+----------+-------------
+    |       Mouser Part No.       |  Est.  |         |          |
+Line|      Customer Part No.      |  Ship  |   Qty   |   Unit   |  Extended
+ No.|    Manufacturer Part No.    |  Date  | Ordered |  Price   |    Price
+----+-----------------------------+--------+---------+----------+-------------
+   1 757-CMS06TE12L,Q,M            08/03/13         4      0.479          1.92
+     CMS06(TE12L,Q,M)
+     Diode Schottky 30V
+     RoHS: Compliant
+
+   2 771-BT1308W-600D,115          08/03/13         4      0.306          1.22
+     BT1308W-600D,115
+     Thyristor TRIAC 600V
+     RoHS: Compliant
+
+   3 74-593D107X9010C2TE3          08/03/13         2      0.528          1.06
+     593D107X9010C2TE3
+     100uF 10volts 10%
+     RoHS: Compliant
+
+   4 595-ADS1299IPAG               08/03/13         2      62.02        124.04
+     ADS1299IPAG
+     Low-Noise,8-Ch,24B
+     RoHS: Compliant
+
+   5 645-598-8070-107F             08/03/13       100       0.05          5.00
+     598-8070-107F
+     Green Water Clr
+     RoHS: Compliant
+
+   6 649-61729-1011BLF             08/03/13         2       0.58          1.16
+     61729-1011BLF
+     4P R/A RECEPTACLE
+     RoHS: Compliant
+
+   7 538-73101-0360                08/03/13        16       2.16         34.56
+     73101-0360
+     VERT JACK PCB
+     RoHS: Compliant through Exemp
+
+   8 771-74AUP1G125GW-G            08/03/13         2      0.096          0.19
+     74AUP1G125GW,125
+     BUFF/DRVR 3-ST 1.8V
+     RoHS: Compliant
+
+   9 649-77313-101-32LF            08/03/13         2      0.974          1.95
+     77313-101-32LF
+     32P STR DR TMT HDR
+     RoHS: Compliant
+
+  10 517-929870-01-06-RA           08/03/13         2      0.586          1.17
+     929870-01-06-RA
+     6P BRD MNT SKT GOLD
+     RoHS: Compliant
+
+  11 517-929870-01-08-RA           08/03/13         4      0.784          3.14
+     929870-01-08-RA
+     8P BRD MNT SKT GOLD
+     RoHS: Compliant
+
+  12 517-929870-01-10-RA           08/03/13         2      0.982          1.96
+     929870-01-10-RA
+     10P BRD MNT SKT GOLD
+     RoHS: Compliant
+
+  13 815-ABS07-32.768KHZT          08/03/13         2       1.11          2.22
+     ABS07-32.768KHZ-T
+     32.768KHz 12.5pf
+     RoHS: Compliant
+
+  14 556-ATSAM3X8EA-AU             08/03/13         2      10.89         21.78
+     ATSAM3X8EA-AU
+     LQFP144,GREEN,
+     RoHS: Compliant
+
+  15 653-B3SN-3012P                08/03/13         2       0.58          1.16
+     B3SN-3012P
+     SP SEALD W/GRND TAPE
+     RoHS: Compliant
+
+  16 78-BZG03C27                   09/30/13         2      0.165          0.33
+     BZG03C27TR
+     27 Volt 600W 5%
+     RoHS: Compliant through Exemp
+
+  17 698-CAT24C128WI-GT3           08/03/13         6      0.503          3.02
+     CAT24C128WI-GT3
+     128K-Bit I2C Serial
+     RoHS: Compliant
+
+  18 71-CRCW0603-19.6K-E3          08/03/13         2      0.066          0.13
+     CRCW060319K6FKEA
+     1/10watt 19.6Kohms
+     RoHS: Compliant through Exemp
+
+  19 71-CRCW0603-1.0K-E3           08/03/13         4      0.066          0.26
+     CRCW06031K00FKEA
+     1/10watt 1.0Kohms 1%
+     RoHS: Compliant through Exemp
+
+  20 520-120-20-33-CKMT            08/03/13         2       1.11          2.22
+     ECS-120-20-33-CKM-TR
+     12.000MHz 20pF
+     RoHS: Compliant
+
+  21 667-ERA-3AED152V              08/03/13        50      0.022          1.10
+     ERA-3AED152V
+     0603 1500ohms 25ppm
+     RoHS: Compliant
+
+  22 667-ERA-3AED470V              08/03/13        50      0.022          1.10
+     ERA-3AED470V
+     0603 47ohms 25ppm
+     RoHS: Compliant
+
+  23 667-ERA-3AED561V              08/03/13        60      0.017          1.02
+     ERA-3AED561V
+     0603 560ohms 25ppm
+     RoHS: Compliant
+
+  24 667-ERA-3AED680V              08/03/13         4      0.074          0.30
+     ERA-3AED680V
+     0603 68ohms 25ppm
+     RoHS: Compliant
+
+  25 667-ERA-6AED105V              08/03/13        50      0.017          0.85
+     ERA-6AED105V
+     0805 1000Kohms 25ppm
+     RoHS: Compliant
+
+  26 667-ERJ-3BWFR020V             08/03/13         4      0.611          2.44
+     ERJ-3BWFR020V
+     0603 0.02ohms
+     RoHS: Compliant
+
+  27 667-ERJ-3EKF1243V             08/03/13         2      0.066          0.13
+     ERJ-3EKF1243V
+     0603 124Kohms
+     RoHS: Compliant through Exemp
+
+  28 81-GRM1885C1H152FA1D          08/03/13         2      0.182          0.36
+     GRM1885C1H152FA01D
+     0.0015uF 50Volts 1%
+     RoHS: Compliant
+
+  29 963-LMK212AB7106MG-T          08/27/13       100      0.044          4.40
+     LMK212AB7106MG-T
+     CAP MLCC 0805 10V
+     RoHS: Compliant
+
+  30 863-MC74HC595ADTG             08/03/13        16      0.248          3.97
+     MC74HC595ADTG
+     8-Bit 3 State Shift
+     RoHS: Compliant
+
+  31 652-MH2029-221Y               08/03/13        50       0.04          2.00
+     MH2029-221Y
+     220uH 25%
+     RoHS: Compliant
+
+  32 650-MINIASMDC050F-2           08/03/13         2      0.479          0.96
+     MINIASMDC050F-2
+     24V 100A 0.09 Ohms
+     RoHS: Compliant
+
+  33 863-NCP1117LPST33T3G          08/03/13         2      0.338          0.68
+     NCP1117LPST33T3G
+     LOW DROPOUT
+     RoHS: Compliant
+
+  34 863-NCP1117ST50T3G            10/01/13         2      0.347          0.69
+     NCP1117ST50T3G
+     5.0V 1A Positive
+     RoHS: Compliant
+
+  35 756-PCF0603R-22K1BT1          08/03/13        38      0.144          5.47
+     PCF0603R-22K1BT1
+     .063W 22.1K ohm 0.1%
+     RoHS: Compliant
+
+  36 756-PCF0603R-39K2BT1          08/03/13         6      0.144          0.86
+     PCF0603R-39K2BT1
+     .063W 39.2K ohm 0.1%
+     RoHS: Compliant
+
+  37 504-PTS181260V014             08/03/13         2      0.165          0.33
+     PTS181260V014
+     PPTC 1812 60V 0.14A
+     RoHS: Compliant
+
+  38 919-R05P205S                  08/03/13         2      11.88         23.76
+     R05P205S
+     2W DC/DC 5.2kV UNREG
+     RoHS: Compliant
+
+  39 919-R05P209S                  08/03/13         2      11.88         23.76
+     R05P209S
+     2W DC/DC 5.2kV UNREG
+     RoHS: Compliant
+
+  40 660-RK73H1JTTD1003F           08/03/13        15      0.011          0.17
+     RK73H1JTTD1003F
+     1/10watt 100Kohms 1%
+     RoHS: Compliant through Exemp
+
+  41 754-RR0816P-103D              08/03/13       100      0.029          2.90
+     RR0816P-103-D
+     1/16W 10Kohm 0.5%
+     RoHS: Compliant
+
+  42 754-RR0816P-8451D90H          08/03/13         2      0.083          0.17
+     RR0816P-8451-D-90H
+     1/16W 8.45Kohm 0.5%
+     RoHS: Compliant
+
+  43 754-RR0816Q-390D              08/03/13         4      0.083          0.33
+     RR0816Q-390-D
+     1/16W 39ohm 0.5%
+     RoHS: Compliant
+
+  44 603-RT0603FRE076K8L           08/03/13         2      0.083          0.17
+     RT0603FRE076K8L
+     1/10W 6.8K ohm 1%
+     RoHS: Compliant through Exemp
+
+  45 634-SI8606AC-B-IS1            08/03/13         4       2.99         11.96
+     Si8606AC-B-IS1
+     3.75kV Bidirect I2C
+     RoHS: Compliant
+
+  46 634-SI8661ED-B-IS             08/03/13         2       3.88          7.76
+     Si8661ED-B-IS
+     6 Ch 5.0 kV
+     RoHS: Compliant
+
+  47 634-SI8662ED-B-IS             08/03/13         2       3.88          7.76
+     Si8662ED-B-IS
+     6 Ch 5.0 kV
+     RoHS: Compliant
+
+  48 652-SRR4028-470Y              08/03/13         8      0.528          4.22
+     SRR4028-470Y
+     47uH
+     RoHS: Compliant
+
+  49 595-TL431BIDBZR               08/03/13         4      0.561          2.24
+     TL431BIDBZR
+     Adjustable Precision
+     RoHS: Compliant
+
+  50 71-TNPW060343K2BEEA           08/03/13         2      0.305          0.61
+     TNPW060343K2BEEA
+     43.2Kohms .1% 25ppm
+     RoHS: Compliant through Exemp
+
+  51 71-TNPW060368K1FHEA           08/03/13         2      0.132          0.26
+     TNPW060368K1FHEA
+     68.1Kohms 1% 50ppm
+     RoHS: Compliant
+
+  52 595-TPS7A4901DGNR             08/03/13         6        2.2         13.20
+     TPS7A4901DGNR
+     Vin 3-36V,150mA,High
+     RoHS: Compliant
+
+  53 595-TS5A4624DCKRE4            08/03/13        16      0.388          6.21
+     TS5A4624DCKRE4
+     1-Ohm SPDT Analog
+     RoHS: Compliant
+
+  54 595-TXS0108EPWR               08/03/13         2        1.6          3.20
+     TXS0108EPWR
+     8B Bidir Vltg-Level
+     RoHS: Compliant
+
+  55 963-UMK325AB7106MM-T          08/03/13        10      0.429          4.29
+     UMK325AB7106MM-T
+     CAP, MLCC, 1210, 50V
+     RoHS: Compliant
+
+  56 511-USBLC6-2SC6               08/03/13         2       0.66          1.32
+     USBLC6-2SC6
+     ESD Protection
+     RoHS: Compliant
+
+  57 77-VJ0603A220GXACBC           08/03/13        15      0.066          0.99
+     VJ0603A220GXACW1BC
+     0603 22pF 50volts
+     RoHS: Compliant
+
+  58 77-VJ0603A470GXACBC           08/03/13       100      0.043          4.30
+     VJ0603A470GXACW1BC
+     0603 47pF 50volts
+     RoHS: Compliant
+
+  59 77-VJ0603Y104JXJPBC           08/03/13       150      0.016          2.40
+     VJ0603Y104JXJPW1BC
+     0603 0.1uF 16volts
+     RoHS: Compliant
+
+  60 78-VLMY1300-GS08              08/03/13        60      0.063          3.78
+     VLMY1300-GS08
+     Yellow Clear
+     RoHS: Compliant
+
+  61 565-3267                      08/03/13         2       1.21          2.42
+     3267
+     UNINSULATED BAN JACK
+     RoHS: Compliant
+
+
+                                                                 =============
