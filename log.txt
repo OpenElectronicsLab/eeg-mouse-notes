@@ -267,6 +267,12 @@ Design ideas included:
 
 Ideas to try
 ============
+ * review alternative anti-aliasing filter combinations and
+   resistor noise:
+    channels 1 & 2 as previous filters
+    3 & 4 as 1299 example
+    5 & 6 as high resistance
+    7 & 8 as 1299 with metal film
  * Redesign board with combined isolator, Arduino, and ADS129x
    to reduce noise and serve as a programmable general purpose
    break-out board
@@ -311,6 +317,12 @@ Eventually
 *  ADS 129x pin 53 (AVSS1) could be star-grounded to AGND.
 
 *  Add additional vias to connect gound plane to back board.
+
+*  Schematic for filter jumpers has two 8x2 headers; let's make that
+   a single 16x2.
+
+*  Create a footprint based on the Arduino footprint which includes
+   our extra headers. Consider including the analog headers, too.
 
  * While we are reasonably happy to operate the EEG ourselves during
    prototyping with minimal precautions, a final product must include
