@@ -305,6 +305,13 @@ Problem list
 
 Eventually
 ==========
+ * The ADS129x digital ground on pin 31 the south side of the chip
+   should not be connected to AGND; fix in next version of board.
+
+*  ADS 129x pin 53 (AVSS1) could be star-grounded to AGND.
+
+*  Add additional vias to connect gound plane to back board.
+
  * While we are reasonably happy to operate the EEG ourselves during
    prototyping with minimal precautions, a final product must include
    isolation to protect the wearer from electrocution.
