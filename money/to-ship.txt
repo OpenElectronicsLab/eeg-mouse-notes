@@ -1,0 +1,11 @@
+US -> NL
+6 (or 10)  47Ohm resistors
+3 sets of boards
+connectors from 4uconn
+stencil
+simon-game
+16 zero-Ohm resistors
+16 4.99k Ohm resistors
+16 4.7nF capacitors
+plastic screws, washers, nuts, etc
+touch-proof connectors
