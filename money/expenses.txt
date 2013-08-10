@@ -2,3 +2,8 @@ namecheap.com Register openelectronicslab(s).(org,com,eu,us) - paid by eric: $64
 4UConnector.com order for headers - paid for by Kendrick: $31.10
 goldphoenixpcb.com order for 7 4 layer boards - paid for by Kendrick: $423.94
 mouser.com Parts: € 363,33 VAT: € 76,30 Order Total: € 439,63 - paid by eric
+  * covers most parts for 2 ads-sam3x boards,
+    2 analog shields, 2 digital shields, 1 BNC shield
+  * dialed up numbers on some cheap parts
+  * dialed up to pricepiont quanties where cheaper
+
