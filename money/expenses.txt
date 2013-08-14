@@ -12,5 +12,6 @@ Sparkfun Order for Simon kits - paid by Kendrick: $79.90 + shipping
 Digikey order for 25 metal film R plus 10 uF caps - paid by Kendrick: 17.33
 Digikey order - paid by Kendrick: 38.60
   * Enough caps and MF resistors to add filters for all 8 channels on 4 boards
-  * Extra parts needed for LEDs added to patch-shield digital board
+  * Extra parts needed for LEDs added to bnc board
 McMaster-Carr order for plastic fasteners - paid by Kendrick: $40.80
+Discount disposables order for touch proof connectors - paid by Kendick: 258.51
