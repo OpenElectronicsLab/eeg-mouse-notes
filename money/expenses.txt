@@ -14,4 +14,7 @@ Digikey order - paid by Kendrick: 38.60
   * Enough caps and MF resistors to add filters for all 8 channels on 4 boards
   * Extra parts needed for LEDs added to bnc board
 McMaster-Carr order for plastic fasteners - paid by Kendrick: $40.80
-Discount disposables order for touch proof connectors - paid by Kendick: 258.51
+Discount disposables order for touch proof connectors - paid by Kendick: $258.51
+Solder stencil ($99 stencil, $66 kit, $25 shipping) - paid by Kendrick: $190
+Patch shield digital PCB x 7 - paid by Kendrick: $155.10
+Patch shield analog PCB x 7 - paid by Kendrick: $155.10
