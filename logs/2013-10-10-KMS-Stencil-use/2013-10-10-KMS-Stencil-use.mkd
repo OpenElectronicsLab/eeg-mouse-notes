@@ -1,0 +1,181 @@
+% Stencil use notes for 2013-10-10
+
+On the evening of 2013-10-10 I (KMS) attempted to use the "Complete prototype
+stencil" kit we had ordered from [Advanced Circuits](
+http://advancedcircuits.com) to solder the surface mount components of an
+arduino-ads1298 rev1 board.  The results were a mixed success, with the most
+significant issues probably being attributable to my lack of experience with
+solder stencils.
+
+I first secured the board by using the right angle pieces of (of FR4?) from the
+stencil kit.  The right angle pieces were taped to the table with painter's
+tape so that they applied a small amount of compression to the PCB.  No tape
+was used on the PCB itself, but the angle pieces seemed to hold it securely.
+
+![Using the FR4 right angles to hold the board](IMG_20131010_205658.jpg)
+
+The stencil was next carefully aligned to the PCB by eye with the flat edge
+of the stencil facing upwards.  The next time it may be better to place the
+flat edge of the stencil downwards, for reasons I'll explain below.  Once the
+stencil was aligned, it was taped by the flat edge to the angle brackets and
+table, forming a hinge.
+
+![Taping down the stencil](IMG_20131010_210108.jpg)
+
+This taping provided surprisingly good registration of the stencil within the
+plane of the table, but not vertically; in the absence of pressure from above,
+the stencil would bend slightly away from the PCB in places.  This may have
+contributed to the problems of solder spreading mentioned below.  I don't know
+of an easy way to reduce this given the thinness of the stencil.  Probably the
+professional frames stretch the stencil, like an artist's canvas, to make sure
+it remains flat.  It's not clear if building or buying such a frame would be
+worth the time or expense for a prototype like this, however.
+
+I next applied lead-free solder paste (Best BT705 Sn:90%, Cu:7% Ag:3%, from
+[SparkFun](http://sparkfun.com)) to the squeegee included with the stencil
+kit.  (Note the vertical space visible between the stencil and the board
+in this picture)
+
+![Stencil paste applied to squeegee](IMG_20131010_210834.jpg)
+
+The amount of solder paste was possibly a little low, but in the right range.
+I then tried to apply the solder paste by swiping the squeegee downward across
+the stencil at about a 30 degree angle.  When I reached the lower edge of the
+stencil, however, I was forced to increase the angle so that my fingers would
+clear the vertical lip at the lower edge of the board.  At first I tried to take
+a few more passes to push the solder paste downwards; this was probably a bad
+idea, however, both because it was not very successful and may have lead to
+the smearing mentioned below.  I then tried swiping upwards towards the flat
+edge of the stencil; this worked, leaving a thin layer of solder covering the
+stencil, but swiping upward felt a bit more awkward.  Facing the flat edge of
+the stencil downwards, and mentioned above, and slowly decreasing the angle
+during the swipe would probably be a better idea next time.
+
+![Spreading the solder paste onto the stencil](IMG_20131010_211325.jpg)
+
+I then did a second pass with a more vertical position of the squeegee (about
+60 degrees).  The squeegee flexed away from the board wherever my hands were
+not holding it, however, leaving a thin layer of solder.  As a result, I ended
+up again taking multiple swipes to remove all of the excess solder. Perhaps
+something stiffer than the squeegee, like a baker's bench scraper, would have
+worked better.
+
+![Excess solder removed from stencil](IMG_20131010_211741.jpg)
+
+I then carefully hinged the stencil away from the board.  I think this style of
+lifting would have worked well if the previous steps had not smeared the
+solder; this will have to be confirmed in future attempts, however.
+
+![Stencil removed from board](IMG_20131010_211833.jpg)
+
+Note the smearing of solder paste in the images below; solder paste from
+multiple pins overlaps, and the solder paste extends beyond where the apertures
+were in the stencil.
+
+![Solder paste on PCB](IMG_20131010_211842.jpg)
+![Closeup of solder paste of SAM3x footprint](IMG_20131010_211851.jpg)
+![Closeup of solder paste of ADS1299 footprint](IMG_20131010_211905.jpg)
+
+I then remembered that there was a ground loop we accidentally introduced into
+this version of the board.  I used my pocket knife to cut the foil so that the
+RESV1 pin connected to just the digital ground (and not both the digital and
+analog ground.  It looked like I was successful when I looked at this under the
+scope, but I'm not certain.  This would have been much better to do before
+applying solder paste; although I did not notice it at the time, I think I put
+my finger on the solder paste near one of the inductors while holding the board
+to do this (the solder paste on that inductor looked very thin).
+
+![Cut connecton of RESV1 pin to analog ground](IMG_20131010_214245.jpg)
+
+I then used forceps to place components on the board.  I used a print-out of
+components grouped by value, and then added the components by grabbing a bag of
+components from the mouser order, looking up the appropriate component on the
+paper to find the component references (e.g. R16 or C65) that used that
+component, and then placing the components on the board and checking off the
+references on the sheet as I placed the parts.  While I usually had a good
+sense of where each component went, in a number of cases I had to pull up the
+board in kicad and use the find feature to find a particular reference on the
+board.
+
+I ran into several small problems while doing this:
+
+ *  The 0603 component references were sometimes very difficult to read due to
+    the limited resolution of the silk screen.  It may be worth increasing the
+    font size for these components on future boards.  The 0805 component
+    references, while still small, were much more readable.
+ *  I sometimes struggled with the physical alignment of the components,
+    especially the 0.5 mm pitch ICs.  This will probably improve with practice,
+    but lead to additiona smearing of solder paste.
+ *  The CAT24C128 EEPROM was narrow for the footprint we're using.  I ended up
+    soldering it to the pads on one side, and plan to solder small wires
+    between the pads and pins on the other side.
+ *  There was no dot for pin 1 for the CAT24C128 footprint.  I was able to look
+    this up in KiCad, but we should fix the footprint so that it shows the
+    chip's orientation.
+ *  The Si8606 we ordered was the narrow version, but we use the footprint of
+    the wide version.  I cleaned the solder paste off of the pads for these
+    chips to simplify later hand soldering, using bits of paper towell held
+    with the forceps to wipe it away.
+ *  I had ordered a 6.3V version of the 0805 10uF capacitors because Mouser
+    was out of the version on our parts list, then later thought better of
+    this and ordered a 10V version from digikey.  When I went to place the
+    components, however, I carelessly placed the 6.3V ones.  These will
+    probably work for the light duty our prototype will face, but they aren't
+    really appropriately derated for use with the 5V power lines.  Thus I
+    may desolder the ones used of the 5V lines and replace them with the
+    higher rated components.
+ *  The 1210 10uF capacitors (50V) don't seem to have the right footprint on
+    the schematic.  We may need to back-annotate these again.
+ *  The footprint for the Zener diode seemed much larger than needed.  It may
+    have been recommended for thermal reasons, however, and there is no problem
+    soldering the part into the footprint.  This is worth double checking with
+    the data sheet, however.
+ *  Placing the components took me over five hours, which is much longer than
+    the 1 hour maximum solder paste working time I've seen recommended.  I may
+    get faster with practice, but some of this may be unavoidable when hand
+    placing this many components.  This didn't cause any obvious problems,
+    however, and the solder paste did not harden during this time.  Perhaps
+    temperature and humidity have a large effect, with the 1 hour window
+    assuming a warm day without air conditioning.
+
+Other notes:
+
+ *  The spacing between the 0603 components seemed more than adequate when
+    using solder paste, and we could probably place the larger components this
+    close to eachother if needed without causing problems for us.
+ *  I soldered in the alternative components for the filters, namely:
+    0 Ohm resistors for R1-R16 and R55, nothing for C1-C16 and C99, 4.99 kOhm
+    metal-film resistors for R17-R32 and R56, and 4.7 nF capacitors for
+    C17-C32 and C101.
+
+![PCB after component placement](IMG_20131011_023913.jpg)
+
+Finally the board went into the toaster oven.
+
+![PCB in toaster](IMG_20131011_024756.jpg)
+
+The thermostat does not seem
+to be working on the toaster at the moment, so it was simply "on"  After a
+delay the various patches of solder paste went through liquidus in rapid
+succession, as assessed by the change from gray to shiny.  I then waited
+another 30 seconds or so, which probably wasn't a good idea as then a faint
+amount of smoke appeared.  Upon noting the smoke I quickly opened the oven,
+turning it off and cooling the board.  Again, this may have been more rapid
+cooling than would be ideal.  From previous experience, however, it seems
+likely that this did not seriously harm the components, as nothing was visibly
+molten, cracked, or scorched.
+
+The overall results appeared to be reasonably good:
+
+![PCB after toaster oven](IMG_20131011_025712.jpg)
+
+There are a lot of solder bridges that will need to be cleaned up.  Less
+smearing of the solder may help with this.
+
+![SAM3X solder bridges](IMG_20131011_025725.jpg)
+![ADS1299 solder bridges](IMG_20131011_025730.jpg)
+![TPS7a9 solder briges](IMG_20131011_025750.jpg)
+
+Here is a closeup of the overly wide footprint for the CAT24C128:
+
+![Gap between pads and pins of CAT24C128](IMG_20131011_031921.jpg)
