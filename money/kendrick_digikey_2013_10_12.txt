@@ -1,0 +1,10 @@
+Index	Quantity	Part Number	Description	Customer Reference	Available Quantity	Backorder Quantity	Unit Price USD	Extended Price USD	
+1	6	336-2055-5-ND	IC DGTL ISO 2CH OPEN DRAIN 16SO		6	0	4.34000	$26.04	
+2	100	P470HCT-ND	RES 470 OHM 1/10W 1% 0603 SMD		100	0	0.01140	$1.14	
+3	6	952-1823-ND	08-WAY SIL VERT SOCKET L/FREE		6	0	1.44000	$8.64	
+4	3	952-1808-ND	06-WAY SIL VERT SOCKET L/FREE		3	0	1.29000	$3.87	
+5	3	952-1846-ND	10-WAY SIL VERT SOCKET L/FREE		3	0	1.82000	$5.46	
+						Subtotal	$45.15
+						Shipping	unknown
+						Estimated Sales Tax	$3.61
+						Total	unknown
