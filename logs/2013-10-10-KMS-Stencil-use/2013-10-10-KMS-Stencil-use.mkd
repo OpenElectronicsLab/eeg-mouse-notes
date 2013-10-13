@@ -76,6 +76,11 @@ were in the stencil.
 ![Closeup of solder paste of SAM3x footprint](IMG_20131010_211851.jpg)
 ![Closeup of solder paste of ADS1299 footprint](IMG_20131010_211905.jpg)
 
+If I were to do this again, at this point I would wipe the solder paste off the
+board and wipe it down with isopropyl alcohol, then try using the stencil again
+to see if I could get a better result.  I wasn't that wise this time, however,
+so I went with the smudged solder paste shown above.
+
 I then remembered that there was a ground loop we accidentally introduced into
 this version of the board.  I used my pocket knife to cut the foil so that the
 RESV1 pin connected to just the digital ground (and not both the digital and
