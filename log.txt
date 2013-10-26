@@ -295,15 +295,14 @@ Design ideas included:
 
 Ideas to try
 ============
+ * calculate frequency corner using various values of resistance
+   from the electrodes.
  * review alternative anti-aliasing filter combinations and
    resistor noise:
     channels 1 & 2 as previous filters
     3 & 4 as 1299 example
     5 & 6 as high resistance
     7 & 8 as 1299 with metal film
- * Redesign board with combined isolator, Arduino, and ADS129x
-   to reduce noise and serve as a programmable general purpose
-   break-out board
  * Simulate bit error by creating a fake data series of all zeros
    with occasional ones and look to see how our filter responds to
    see if it looks like the noise we see while testing
