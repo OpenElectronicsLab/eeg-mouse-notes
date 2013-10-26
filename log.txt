@@ -265,6 +265,34 @@ Design ideas included:
     (green) ... channels which are set to SHORTED will not have either
     LED lit.
 
+2013-10-26 looked at options for antialiasing filters. The ADS1298 has
+    a filter with a frequency corner of:
+    1/(2 * pi * sqrt(22100Ω * 47pf * 10000Ω * 47pf))
+    = 227785.5
+    And noise of:
+    sqrt( 4 * (1.38 * 10^-23)J/K * 290K * 2 * (10000Ω + 22100Ω) ) * sqrt(131Hz)
+    = 367nV RMS
+    The ADS1298 datasheet lists the noise of the chip at 500nV, thus 367nV
+    noise from the filter, is less that the noise of the chip, and result in
+    a combined noise of about 620nV.
+
+    The ADS1299 example filter has noise of:
+    sqrt( 4 * 1.38 * 10^-23 * 290 * 2 * 4990 ) * sqrt(131)
+    = 144nV
+    The ADS129 datasheet lists the noise of the chip at only 200nV
+
+    We are considering setting one pair of inputs to have a layout like:
+    1/(2 * pi * sqrt(2610 * 0.00000000027 * 2610 * 0.00000000027))
+    = 225847.8
+    And a noise of:
+    sqrt( 4 * 1.38 * 10^-23 * 290 * 2 * (2610 + 2610) ) * sqrt(131)
+    = 147nV
+    With a combined noise of about 248nV.
+
+
+
+
+
 Ideas to try
 ============
  * review alternative anti-aliasing filter combinations and
