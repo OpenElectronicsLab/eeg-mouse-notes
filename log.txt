@@ -276,7 +276,10 @@ Design ideas included:
     noise from the filter, is less that the noise of the chip, and result in
     a combined noise of about 620nV.
 
-    The ADS1299 example filter has noise of:
+    The ADS1299 example filter has a frequency corner of:
+    1/(2 * 3.14159 * 4990 * 4.7*10^-9)
+    = 6786
+    and noise of:
     sqrt( 4 * 1.38 * 10^-23 * 290 * 2 * 4990 ) * sqrt(131)
     = 144nV
     The ADS129 datasheet lists the noise of the chip at only 200nV
@@ -289,6 +292,11 @@ Design ideas included:
     = 147nV
     With a combined noise of about 248nV.
 
+2013-11-09 played with simulating the filters in ngspice.
+    We did not see the frequency corners which we expected.
+    We may go with these components anyway:
+        754-RG1608P-2611-BT5   thin film   2.61kOhm   0.1%
+        80-C0603C271J5G   capacitors  270pF   5%
 
 
 

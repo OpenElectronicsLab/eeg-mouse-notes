@@ -1,0 +1,4 @@
+ngspice
+ source our_filter.net
+ ac dec 10000 0.1 1000kHz
+ plot n0 n1 n2

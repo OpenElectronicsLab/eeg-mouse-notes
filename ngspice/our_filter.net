@@ -1,0 +1,15 @@
+
+*******
+*    N0----R1---N1--R2--N2
+*    |          |       |
+*    Vs         C1      C2
+*    |          |       |
+*    0----------+-------+
+*
+* Spice netlister for gnetlist
+R1 n0 n1 2610
+C1 n1 0 270pF
+R2 n1 n2 2610
+C2 n2 0 270pF
+V1 n0 0 AC
+.END
