@@ -349,6 +349,9 @@ Eventually
  * The ADS129x digital ground on pin 31 the south side of the chip
    should not be connected to AGND; fix in next version of board.
 
+ * Adding an "Erase" button would make it much easier to recover from bad
+   firmware.
+
 *  ADS 129x pin 53 (AVSS1) could be star-grounded to AGND.
 
 *  Add additional vias to connect gound plane to back board.
