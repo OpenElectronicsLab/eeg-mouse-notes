@@ -1,0 +1,49 @@
+% Soldering notes for 2013-11-28
+
+On the evening of 2013-11-28 I (KMS) cleaned up the solder bridges from
+the stenciling attempt, replaced the antialiasing filtering capacitors and
+resistors with the new (270 pF and 2.61 kOhm) ones, bridged the short pins
+of the CAT24C128, and soldered in the remaining components.
+
+Cleanup of the solder bridges was done by first covering the pins with a
+thin layer of flux (Kestler Flux-Pen #2331-zx), then using the cut end of
+a ribbon of solder wick (Techspray Pro Wick size #2) and a soldering iron
+at 312 degrees C to wick away the solder bridges.  The wick was pulled away
+parallel to the pins, so that any solder whiskers were oriented along the pins
+rather than bridging between them.  I struggled a bit with the first edge of
+the SAM3X while trying to figure out the right direction and temperature to
+use; I started out wiping perpendicular to the pins (along the edge of the
+chip) and with a temperature of 261 degrees C, which seemed to create new
+small solder bridges.  Once I got the technique and temperature down, however
+ the remaining cleanup went quickly.  
+
+![Tool orientation used for solder bridge cleanup (staged photo)](IMG_20131128_204505.jpg)
+
+For removing the resistors, I was able to heat one of the pads and the
+resistor conducted the heat to the other pad well enough to melt the solder on
+both sides.  For the capacitors, however, this technique did not work as well.
+I found that they could easily be desoldered by placing the soldering iron
+parallel to the capacitor so it simultaneously heated both pads while grasping
+and gently lifting the capacitor lengthwise with a pair of forceps.  This
+approached worked quite well, and will probably work well on imperial size
+0603 components in general.  
+
+![Tool orientation used for desoldering capacitors (staged photo)](IMG_20131128_204656.jpg)
+
+The surface mount soldering was done at 334 degrees C with lead free solder
+(Ningbo Xihan Tin Solder Co. Sn 99.3% Cu 0.7% Flux 2.5% AK47e Diameter 0.8
+mm).  The through hole soldering was done with the same solder but at 354
+degrees C because I was having trouble soldering the ground pins that did
+not have thermal relief (this might be something to fix in the design).
+
+Because all of the lower pins of the CAT24C128 were connected to ground,
+I bridged the pins to the pads using wire trimmed from a 1/4 watt resistor
+lead placed perpendicular to the pins (parallel to the edge of the IC).  
+
+![Solder bridge for the CAT24C128](IMG_20131128_235349.jpg)
+
+I tried to remove the flux after all of the soldering by using running warm
+water and a tooth-brush.  This removed some flux, but was not as effective
+as I had hoped.  
+
+Overall, however, the soldering and solder bridge cleanup went well.
