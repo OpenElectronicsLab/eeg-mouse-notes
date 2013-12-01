@@ -47,3 +47,14 @@ water and a tooth-brush.  This removed some flux, but was not as effective
 as I had hoped.  
 
 Overall, however, the soldering and solder bridge cleanup went well.
+
+## Addendum 2013-12-01
+
+Here are images of the assembled board and patch shield:
+
+![rev1 board](IMG_20131201_185113.jpg)
+
+![rev1 board and patch shield, top](IMG_20131201_185737.jpg)
+
+![rev1 board and patch shield, side](IMG_20131201_185844.jpg)
+
