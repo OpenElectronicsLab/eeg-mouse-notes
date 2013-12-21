@@ -298,45 +298,33 @@ Design ideas included:
         754-RG1608P-2611-BT5   thin film   2.61kOhm   0.1%
         80-C0603C271J5G   capacitors  270pF   5%
 
-
+2013-12-21 re-programming the SAM3X seems to require resetting the
+    chip which can be done by connecting pin 130 to +3.3v. We did
+    not include a switch to make this easy in the rev 1.0 version
+    of the board, so we added this for the rev 1.2 version.
 
 
 Ideas to try
 ============
  * calculate frequency corner using various values of resistance
    from the electrodes.
- * review alternative anti-aliasing filter combinations and
-   resistor noise:
-    channels 1 & 2 as previous filters
-    3 & 4 as 1299 example
-    5 & 6 as high resistance
-    7 & 8 as 1299 with metal film
  * Simulate bit error by creating a fake data series of all zeros
    with occasional ones and look to see how our filter responds to
    see if it looks like the noise we see while testing
  * try median smoothing with a 3 point window
  * Investigate correlating signals from different electrodes, rather than
    simply getting signals in the target band(s) from a single pair.
- * Switch to use USB serial port on Arduino Due.
  * Try controlling with big muscles, e.g. biceps brachialis,
    adductor pollicis.
  * Allow sensitivity and baseline to be specified on command line.
  * Practice.
  * Try narrower bands; may need better/faster bandpass filters.
- * Try wrapping signals wires with ground wire to reduce crosstalk on
-   STM32F407.
  * Try designing active electrodes
  * Add real time spectrogram
 
 Problem list
 ============
- * Find and address all MAYBE notes in schematic.
  * Improve control of cursor.
- * Communicate with DUE via SerialUSB.
-   Given the problems we've seen with high baudrates using the
-   Arduino Due programming port, we probably need to set aside
-   time to address solutions/alternatives before having the
-   next version of the board built.
  * Diagnose data corruption. (suspect crosstalk)
  * separate out view and model logic in window.pl.
  * seek and destroy dash-in-filename bug in Arduino IDE.
@@ -346,12 +334,6 @@ Problem list
 
 Eventually
 ==========
- * The ADS129x digital ground on pin 31 the south side of the chip
-   should not be connected to AGND; fix in next version of board.
-
- * Adding an "Erase" button would make it much easier to recover from bad
-   firmware.
-
 *  ADS 129x pin 53 (AVSS1) could be star-grounded to AGND.
 
 *  Add additional vias to connect gound plane to back board.
@@ -361,10 +343,6 @@ Eventually
 
 *  Create a footprint based on the Arduino footprint which includes
    our extra headers. Consider including the analog headers, too.
-
- * While we are reasonably happy to operate the EEG ourselves during
-   prototyping with minimal precautions, a final product must include
-   isolation to protect the wearer from electrocution.
 
  * replace pins with jumpers in rev1 schematic
  * replace L with FB (device - filter) for ferrite beads in rev1 sch
