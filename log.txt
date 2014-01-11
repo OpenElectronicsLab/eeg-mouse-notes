@@ -350,3 +350,6 @@ Eventually
  * review calculating capacitance delay
 
  * discuss firmware merging with Chris Rorden
+
+ * Move status LED to be visible from either side of board (perhaps by
+   power LED?)
