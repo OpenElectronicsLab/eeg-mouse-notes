@@ -303,6 +303,11 @@ Design ideas included:
     not include a switch to make this easy in the rev 1.0 version
     of the board, so we added this for the rev 1.2 version.
 
+2014-01-11 We used openocd to connect to the SAM3X via JTAG.
+   https://www.olimex.com/Products/ARM/JTAG/ARM-USB-OCD-H/
+   Kendrick's board responds, Eric's first "rev 1.0" board seems
+   to have a non-responsive chip.
+
 
 Ideas to try
 ============
