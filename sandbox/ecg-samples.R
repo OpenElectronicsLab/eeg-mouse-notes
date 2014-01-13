@@ -13,16 +13,17 @@
 # IN1N .. IN8N: LL (red) - Left Leg (All negative inputs are tied together).
 
 electrodes <- read.csv("ecg-electrodes.csv",
-	col.names=c("RA","LA","V1","V2","V3","V4","V5","V6"));
+    col.names=c("magic","leadoffP","leadoffN","GPIO1","GPIO2","GPIO3","GPIO4",
+                "RA","LA","V1","V2","V3","V4","V5","V6"));
 
-# num electrodes
+# num samples
 N <- length(electrodes$RA);
 
 electrodes = data.frame(electrodes, LL=1:N * 0);
 
 I <- electrodes$LA - electrodes$RA
 II <- electrodes$RA - electrodes$LL
-III <- electrodes$LL - electrodes$LL
+III <- electrodes$LA - electrodes$LL
 aVR <- electrodes$RA - (electrodes$LA + electrodes$LL)/2
 aVL <- electrodes$LA - (electrodes$RA + electrodes$LL)/2
 aVF <- electrodes$LL - (electrodes$RA + electrodes$LA)/2
@@ -47,7 +48,7 @@ t <- (0:(N - 1)) / rate;
 #
 
 # filter setup
-highPass <- 1; # Hz
+highPass <- 0.4; # Hz
 highPassWidth <- 0.1; # Hz
 lowPass <- 40; # Hz
 lowPassWidth <- 1; # Hz
@@ -64,7 +65,20 @@ for (i in 1:dim(unfiltered_leads)[2]) {
     filtered_leads[,i] = Re(fft(fft_filtered_lead, inverse=TRUE) / N)
 }
 
-par(mfcol=c(6,2))
-for (i in 1:dim(unfiltered_leads)[2]) {
-	plot(t, filtered_leads[,i], type="l", lwd=2, xlim=c(0,5))
+# plot the raw data
+if (FALSE) {
+    X11()
+    par(mfcol=c(8,1),cex=0.1)
+    for (i in (-8:-1 + dim(electrodes)[2])) {
+        plot(t, electrodes[,i], type="l", lwd=2, xlim=c(1,11), ylim=c(-1./3, 1./3))
+    }
 }
+
+# plot the processed data
+X11()
+par(mfcol=c(6,2),cex=0.1)
+for (i in 1:dim(unfiltered_leads)[2]) {
+    plot(t, filtered_leads[,i], type="l", lwd=2, xlim=c(8,11), ylim=c(-4e-3,4e-3))
+}
+
+
