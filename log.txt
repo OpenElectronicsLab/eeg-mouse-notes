@@ -308,6 +308,33 @@ Design ideas included:
    Kendrick's board responds, Eric's first "rev 1.0" board seems
    to have a non-responsive chip.
 
+2014-01-18
+    Tried a trial using US board rev1-K0:
+        * BIAS OUT was wired to a SelveRest electrode over right margin of
+          trapezius at ~C5 level
+        * INP1 approximately at location FT7
+        * INN1 connector located at "Fp"
+        * ./wired.sh
+        * Horizontal sensitivity: 20
+        * Vertical sensitivity to 20
+        * Baseline: Manual
+        * Vert baseline: 0.000001?  (did not record, but tested later)
+        * Horz baseline: 0.0000015? (idem)
+    results:
+        * 75 pixels
+    Sensitivity seemed very high; it was relatively easy to get the
+    cursor to go to one edge or the other of the square, but more
+    difficult to get it to stay in the middle region.  Control may
+    have been via EMG; left temporalis muscle seemed to give vertical
+    control and frontalis muscle or corrugator supercilii.  This is not
+    as good as our previous best results, but subjectively feels like
+    this could easily be improved with practice and tuning of sensitivity
+    and baseline.
+
+    We also noted that our best previous run (done by Ace in November of
+    2012 right after a shower with the rev0-K0 board with the digital isolator)
+    does not appear to be recorded in this log; our memory was that this was
+    somewhere in the 40 pixel mean distance.
 
 Ideas to try
 ============
