@@ -338,12 +338,11 @@ Design ideas included:
 
 Ideas to try
 ============
+ * Try recording samples from both the rev0 and rev1 boards to compare
+   signal quality.
+ * Add real time spectrogram
  * calculate frequency corner using various values of resistance
    from the electrodes.
- * Simulate bit error by creating a fake data series of all zeros
-   with occasional ones and look to see how our filter responds to
-   see if it looks like the noise we see while testing
- * try median smoothing with a 3 point window
  * Investigate correlating signals from different electrodes, rather than
    simply getting signals in the target band(s) from a single pair.
  * Try controlling with big muscles, e.g. biceps brachialis,
@@ -352,7 +351,6 @@ Ideas to try
  * Practice.
  * Try narrower bands; may need better/faster bandpass filters.
  * Try designing active electrodes
- * Add real time spectrogram
 
 Problem list
 ============
