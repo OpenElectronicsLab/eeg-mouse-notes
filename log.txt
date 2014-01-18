@@ -357,12 +357,15 @@ Ideas to try
 Problem list
 ============
  * Improve control of cursor.
- * Diagnose data corruption. (suspect crosstalk)
  * separate out view and model logic in window.pl.
  * seek and destroy dash-in-filename bug in Arduino IDE.
  * Set up the arduino to work as a mouse, perhaps initially with
    synthetic input rather than EEG/EMG.
  * Revisit filter design for RLD/BIAS circuit
+ * Gain settings are different between the ADS1298 and ADS1299,
+   with the same register setting corresponding to different gains.
+   Eventually the firmware should detect which chip is in use and
+   report the gain (possibly scaling the output appropriately).
 
 Eventually
 ==========
