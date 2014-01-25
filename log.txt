@@ -336,6 +336,12 @@ Design ideas included:
     does not appear to be recorded in this log; our memory was that this was
     somewhere in the 40 pixel mean distance.
 
+2014-01-25 Ace's board now works, now that we have fixed the polarity
+    of Zener diode D1 which on the rev 1.0 version of the board had
+    the dot on the annode side rather than the cathode side. We fixed
+    this for the "rev 1.2" of the board.
+
+
 Ideas to try
 ============
  * Try recording samples from both the rev0 and rev1 boards to compare
