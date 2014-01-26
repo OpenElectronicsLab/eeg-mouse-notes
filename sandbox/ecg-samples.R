@@ -1,4 +1,4 @@
-#!/usr/bin/RScript
+#!/usr/bin/Rscript
 
 # Electrode configuration:
 # BIAS OUT: RL (green) - is connected to the Right Leg.
@@ -22,8 +22,8 @@ N <- length(electrodes$RA);
 electrodes = data.frame(electrodes, LL=1:N * 0);
 
 I <- electrodes$LA - electrodes$RA
-II <- electrodes$RA - electrodes$LL
-III <- electrodes$LA - electrodes$LL
+II <- electrodes$LL - electrodes$RA
+III <- electrodes$LL - electrodes$LA
 aVR <- electrodes$RA - (electrodes$LA + electrodes$LL)/2
 aVL <- electrodes$LA - (electrodes$RA + electrodes$LL)/2
 aVF <- electrodes$LL - (electrodes$RA + electrodes$LA)/2
@@ -50,12 +50,18 @@ t <- (0:(N - 1)) / rate;
 # filter setup
 highPass <- 0.4; # Hz
 highPassWidth <- 0.1; # Hz
-lowPass <- 40; # Hz
+lowPass <- 100; # Hz
 lowPassWidth <- 1; # Hz
+notch <- 60
+notch_width <- 1
 # possible/valid fft frequencies
 f <- (0:(N - 1)) / N * rate;
 # windowing function (just the product of two sigmoid functions)
-win <- function(freq) { 1 / ((1 + exp(-(freq - highPass) / highPassWidth)) * (1 + exp((freq - lowPass) / lowPassWidth))) };
+win <- function(freq) {
+    1 / (1 + exp(-(freq - highPass) / highPassWidth)) * # high pass
+    1 / (1 + exp((freq - lowPass) / lowPassWidth)) * # low pass
+    (1 - exp(-(((freq-notch)/notch_width)^2))) # notch
+};
 
 # apply the filter to each lead in turn
 filtered_leads = unfiltered_leads
@@ -75,10 +81,94 @@ if (FALSE) {
 }
 
 # plot the processed data
-X11()
-par(mfcol=c(6,2),cex=0.1)
-for (i in 1:dim(unfiltered_leads)[2]) {
-    plot(t, filtered_leads[,i], type="l", lwd=2, xlim=c(8,11), ylim=c(-4e-3,4e-3))
+if (FALSE) {
+    X11()
+    par(mfcol=c(6,2),cex=0.1)
+    for (i in 1:dim(unfiltered_leads)[2]) {
+        plot(t, filtered_leads[,i], type="l", lwd=2, xlim=c(8,11), ylim=c(-4e-3,4e-3))
+    }
 }
 
+# plot the data on the standard grid
+if (TRUE) {
+    paper_speed_m_p_s <- 0.025
+    gain_m_p_V <- 10.
+
+    width_in <- 11
+    height_in <- 8.5
+    m_p_in <- 25.4e-3
+    width_m <- width_in * m_p_in
+    height_m <- height_in * m_p_in
+    width_s <- width_m/paper_speed_m_p_s
+    height_V <- height_m/gain_m_p_V
+
+    rows = 3
+    cols = 4
+
+    offset_x_s <- 0.5
+    offset_y_V <- 4e-3
+    length_x_s <- 10.
+    step_x_s <- length_x_s / cols
+    step_y_V <- 3.5e-3
+    step_x_samples <- step_x_s * rate
+    start_time_samples <- step_x_s * 4
+    offset_label_V = 1e-3
+
+    grid_size_x_s = 40e-3
+    grid_size_y_V = 0.1e-3
+    thick_line_every_n = 5
+    thin_lwd=0.1
+    thick_lwd=1
+
+    pdf("ecg.pdf", width=width_in, height=height_in)
+    plot.new()
+    par(mar=c(0,0,0,0))
+    plot.window(xlim=c(0,width_s), ylim=c(0, height_m/gain_m_p_V),
+                xaxs="i", yaxs="i" # use the exact plot range specified
+                )
+
+    # draw the grid
+    for (i in 0:floor(width_s / grid_size_x_s)) {
+        abline(v=i * grid_size_x_s,
+               lwd=(if (i %% thick_line_every_n == 0) thick_lwd else thin_lwd),
+               col="red")
+    }
+    for (i in 0:floor(height_V / grid_size_y_V)) {
+        abline(h=i * grid_size_y_V,
+               lwd=(if (i %% thick_line_every_n == 0) thick_lwd else thin_lwd),
+               col="red")
+    }
+
+    center_median <- function (x) { x - median(x) }
+
+    plot_trace <- function (lead, samples, row, col) {
+        zero_x <- step_x_s * (col - 1) + offset_x_s
+        zero_y <- step_y_V * (row - 1) + offset_y_V
+        lines(t[samples]  - t[samples[1]] + zero_x,
+             center_median(filtered_leads[samples, lead]) + zero_y
+             )
+        text(zero_x,
+             zero_y + offset_label_V,
+             colnames(unfiltered_leads)[lead],
+             pos=4)
+    }
+
+    #plot the main traces
+    for (j in 0:(cols-1)) {
+        for (i in 0:(rows-1)) {
+            samples = 1:step_x_samples + step_x_samples * j + start_time_samples
+            lead = 1 + i + j*rows
+            plot_trace(lead, samples, 5-i, j+1)
+        }
+    }
+
+    #plot the rhythm strips
+    rhythm_leads <- c(2,7)
+    samples = 1:(step_x_samples * cols) + start_time_samples
+    for (i in 1:length(rhythm_leads)) {
+        plot_trace(rhythm_leads[i], samples, 3-i, 1)
+    }
+
+    dev.off()
+}
 
