@@ -341,6 +341,29 @@ Design ideas included:
     the dot on the annode side rather than the cathode side. We fixed
     this for the "rev 1.2" of the board.
 
+2014-02-01 Ace's board was showing strange behavior. The GPIO pins were
+   all reporting as 1, until we shorted the GPIO pins the non-isolaged
+   side to ground. The signals reported did not appear to change as
+   expected when we connected IN1P and/or IN1N to either ground or +5v.
+
+   We altered the firmware to send test signals, but the signals received
+   looked like noise, not the test signals.
+
+   We tested the continutiy betwen the ADS and the isolator chips, as
+   well as the continuity between the SAM3X and the isolator chips.
+   We used a variation on the "Blink" example to not only set the LED
+   HIGH and LOW but also the pins which send data from the SAM3X to the
+   ADS and checked the signals with a multi-meter. Everything looked
+   fine. We altered the firmware to read and report the chip ID and
+   write and then read various values in the GPIO register. All of this
+   worked fine, and (suprisingly) the test signals now looked fine, too.
+
+   Our best guess is that a pin was not making good contact and that
+   pressing on it with the multi-meter may have fixed it for now.
+
+   Given the multiple email requests about the status of the project,
+   we discussed creating something like a blog. We may start with the
+   "gh-pages" branch of the eeg-mouse project.
 
 Ideas to try
 ============
