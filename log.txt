@@ -370,8 +370,6 @@ Ideas to try
  * Try recording samples from both the rev0 and rev1 boards to compare
    signal quality.
  * Add real time spectrogram
- * calculate frequency corner using various values of resistance
-   from the electrodes.
  * Investigate correlating signals from different electrodes, rather than
    simply getting signals in the target band(s) from a single pair.
  * Try controlling with big muscles, e.g. biceps brachialis,
