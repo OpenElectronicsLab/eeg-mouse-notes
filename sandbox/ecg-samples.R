@@ -37,7 +37,7 @@ V6 <- electrodes$V6 - (electrodes$LA + electrodes$RA + electrodes$LL)/3
 unfiltered_leads <- data.frame(I, II, III, aVR, aVL, aVF, V1, V2, V3, V4, V5, V6);
 
 # sample rate (samples per second)
-rate <- 250
+rate <- 500
 
 # times
 t <- (0:(N - 1)) / rate;
@@ -50,10 +50,10 @@ t <- (0:(N - 1)) / rate;
 # filter setup
 highPass <- 0.4; # Hz
 highPassWidth <- 0.1; # Hz
-lowPass <- 100; # Hz
-lowPassWidth <- 1; # Hz
+lowPass <- 40; # Hz
+lowPassWidth <- 4; # Hz
 notch <- 60
-notch_width <- 1
+notch_width <- 2
 # possible/valid fft frequencies
 f <- (0:(N - 1)) / N * rate;
 # windowing function (just the product of two sigmoid functions)
@@ -111,7 +111,7 @@ if (TRUE) {
     step_x_s <- length_x_s / cols
     step_y_V <- 3.5e-3
     step_x_samples <- step_x_s * rate
-    start_time_samples <- step_x_s * 4
+    start_time_samples <- step_x_samples * 2
     offset_label_V = 1e-3
 
     grid_size_x_s = 40e-3
