@@ -391,6 +391,12 @@ Problem list
    with the same register setting corresponding to different gains.
    Eventually the firmware should detect which chip is in use and
    report the gain (possibly scaling the output appropriately).
+ * The rev1 version of the board has male serial headers.
+   * Replace the BoM part-numbers to have shrouded headers to avoid
+   accidental shorting of 3.3v.
+   * Consider adding a limiter of around 200mA. (We already have 500mA
+   resettable fuses so maybe this is not needed if shrouding reduces
+   chance of shorting.)
 
 Eventually
 ==========
