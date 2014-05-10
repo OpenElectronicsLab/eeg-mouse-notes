@@ -365,6 +365,17 @@ Design ideas included:
    we discussed creating something like a blog. We may start with the
    "gh-pages" branch of the eeg-mouse project.
 
+2014-05-10 Laser cut case based on scad-files recieved by KMS and is
+   good. The piece oposite of USB connector is difficult to orient;
+   adding ventilation holes or other clues to orientation may be a
+   good idea.
+
+   When exporting the .dxf file from OpenSCAD, the circles and other
+   shapes are generated as large series of anchors and small vectors,
+   rather than single circles, or curves. This creates very large
+   output files and overwhelm some lasercutters. This appears to be a
+   problem with OpenSCAD, and requires further investigation.
+
 Ideas to try
 ============
  * Try recording samples from both the rev0 and rev1 boards to compare
