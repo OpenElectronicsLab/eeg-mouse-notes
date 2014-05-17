@@ -376,6 +376,26 @@ Design ideas included:
    output files and overwhelm some lasercutters. This appears to be a
    problem with OpenSCAD, and requires further investigation.
 
+2014-05-17 Discussion breaking the "eeg-mouse" project into multiple
+   separate projects. The "rev 0" hardware could be extracted as an
+   ADS129x-breakout-board project. The "rev 1" hardware could become
+   and Open-ExG project. The "eeg-mouse" project would then become a
+   software project which depends upon Open-ExG.
+
+   Things we would like to do include:
+   * adding some "when project began" info to the HTML pages
+   * use git-filter-branch to split the projects for git-hub
+      (we'd keep the main eeg-mouse master history intact for now,
+       perhaps eventually move that to an old-master branch)
+   * document our sucess with the hardware platforms
+   * record graphical display of EEG, EOG, EMG, ECG
+   * explain the safety features
+   * measure and explain differences between through-hole hardware
+       and integrated hardware
+   * find manufacturers and price-out small-run assemblies
+      (failure rate?)
+
+
 Ideas to try
 ============
  * Try recording samples from both the rev0 and rev1 boards to compare
