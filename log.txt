@@ -196,7 +196,7 @@ Design ideas included:
     * control with Due seemed not as good as with the Mega.
 
 2013-03-02 tested sense of instantaneous response with battery
-    Connected the ADS1298 breakout borad to Arduino Due
+    Connected the ADS1298 breakout board to Arduino Due
     Connected a battery ground to RLDOUT and IN1N
     Connected IN1P via a resistor and a jumper to battery
     Observed "seemingly instantaneous" cursor jumps when changed
@@ -234,7 +234,7 @@ Design ideas included:
     2MHz clock from the SAM3X without conflicting with the
     Arduino libraries.
   In the SAM3X "Series Complete" pdf, section 37.6.11.2,
-    there is an explaintion of how the timer-counter
+    there is an explanation of how the timer-counter
     peripheral can be used to generate a square wave of a given
     frequency.  By setting the counter clock to the master clock
     (84 MHz) divided by 2, and then setting the timer register C
@@ -246,13 +246,13 @@ Design ideas included:
     to those listed in section 37.5.1.  Timer-counter 1 does not have
     any output pins available on the 144 pin package we are using; thus
     we are limited to timer-counter 0 or 2.  We chose TC0 signal TIOA1
-    somewhat arbitarily, as it was close to some of the other signal
+    somewhat arbitrarily, as it was close to some of the other signal
     lines to the ADS129x.  It was labeled as AD7 in the arduino
     schematic, which we do not think we will need for other purposes.
 
 2013-05-25 elected to create a separate schematic and board for EEG
     connectors. Decided to have the BIASOUT vs. VIRTGND selected in
-    software to avoid need for more physical space and to consitently
+    software to avoid need for more physical space and to consistently
     record settings with data. This would be doable with a physical
     switch, but no real need to change this mid-operation.
   Page 48 of the ADS1299 datasheet shows that we can use switching
@@ -342,21 +342,21 @@ Design ideas included:
     this for the "rev 1.2" of the board.
 
 2014-02-01 Ace's board was showing strange behavior. The GPIO pins were
-   all reporting as 1, until we shorted the GPIO pins the non-isolaged
+   all reporting as 1, until we shorted the GPIO pins the non-isolated
    side to ground. The signals reported did not appear to change as
    expected when we connected IN1P and/or IN1N to either ground or +5v.
 
    We altered the firmware to send test signals, but the signals received
    looked like noise, not the test signals.
 
-   We tested the continutiy betwen the ADS and the isolator chips, as
+   We tested the continuity between the ADS and the isolator chips, as
    well as the continuity between the SAM3X and the isolator chips.
    We used a variation on the "Blink" example to not only set the LED
    HIGH and LOW but also the pins which send data from the SAM3X to the
    ADS and checked the signals with a multi-meter. Everything looked
    fine. We altered the firmware to read and report the chip ID and
    write and then read various values in the GPIO register. All of this
-   worked fine, and (suprisingly) the test signals now looked fine, too.
+   worked fine, and (surprisingly) the test signals now looked fine, too.
 
    Our best guess is that a pin was not making good contact and that
    pressing on it with the multi-meter may have fixed it for now.
@@ -365,8 +365,8 @@ Design ideas included:
    we discussed creating something like a blog. We may start with the
    "gh-pages" branch of the eeg-mouse project.
 
-2014-05-10 Laser cut case based on scad-files recieved by KMS and is
-   good. The piece oposite of USB connector is difficult to orient;
+2014-05-10 Laser cut case based on scad-files received by KMS and is
+   good. The piece opposite of USB connector is difficult to orient;
    adding ventilation holes or other clues to orientation may be a
    good idea.
 
@@ -387,7 +387,7 @@ Design ideas included:
    * use git-filter-branch to split the projects for git-hub
       (we'd keep the main eeg-mouse master history intact for now,
        perhaps eventually move that to an old-master branch)
-   * document our sucess with the hardware platforms
+   * document our success with the hardware platforms
    * record graphical display of EEG, EOG, EMG, ECG
    * explain the safety features
    * measure and explain differences between through-hole hardware
@@ -395,9 +395,33 @@ Design ideas included:
    * find manufacturers and price-out small-run assemblies
       (failure rate?)
 
+2014-05-24 Trouble with LEDs, turned out that PIN13 on the SAM3X was not
+   well soldered to the board. Examined number of pins which are easy to
+   examine continuity from a via, most are, it turns out. The USB pins,
+   the JTAG pins, the crystals, and some of the capacitors are exceptions.
+   A few of the pins go through a resistor before hitting a via.
+   We discussed "bed of nails" testing, and what changes to the under-side
+   of the board that would require.
+   * https://en.wikipedia.org/wiki/Boundary_scan#JTAG_Test_Operations
+   * http://www.atmel.com/tools/BSDL_files_SAM3X.aspx
+   For the Sam3X, "Test" mode requires that JTAGSEL be pulled high, however
+   we seem to have tied it to ground. While we might be able to cut a trace
+   and get the rev 1.2 board into JTAG Boundary Scan mode, it would not be
+   straight-forward.
+
+   Use of the Open Bench Logic Sniffer from DangerousPrototypes.com with
+   ols-0.9.7 indicated that there was a problem with the SERIAL line to the
+   LEDs. Using a microscope and poking at Pin13 on SAM3X with fine tweezers,
+   some movement could be seen with the foot, even though it passed the
+   continuity test. Careful cleaning and re-soldering fixed it.
+
 
 Ideas to try
 ============
+ * More literature review
+ * Make HTML for ExG board and ADS129x-Breakout
+ * JTag, openocd demo
+ * Logic Sniffer, ols-0.9.7 demo
  * Try recording samples from both the rev0 and rev1 boards to compare
    signal quality.
  * Add real time spectrogram
@@ -433,7 +457,7 @@ Eventually
 ==========
 *  ADS 129x pin 53 (AVSS1) could be star-grounded to AGND.
 
-*  Add additional vias to connect gound plane to back board.
+*  Add additional vias to connect ground plane to back board.
 
 *  Schematic for filter jumpers has two 8x2 headers; let's make that
    a single 16x2.
@@ -450,3 +474,6 @@ Eventually
 
  * Move status LED to be visible from either side of board (perhaps by
    power LED?)
+
+ * consider half-height single-width headers to avoid them sticking too
+   high above the case and being vulnerable.
