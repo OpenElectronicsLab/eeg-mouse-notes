@@ -1,0 +1,41 @@
+If we reach the point where we want a fun distraction, I ran into
+something in pediatrics that might be a neat demo of a different kind of
+analysis of biopotentials we can do with the rev1 board: recording the
+click-evoked acoustic brainstem response.
+
+https://en.wikipedia.org/wiki/Auditory_brainstem_response
+
+Basically this is looking for stereotyped EEG activity in the brain in
+response to a sound.  It's widely used as a standard screen for hearing
+problems in infants.  The trick is that this response is relatively
+small compared to the electrical noise and all of the other activity
+going on in the brain, so you have to average it over 1000+ times of
+playing the sound (usually a short click played ~20 times a second, so
+you could collect 1000 recordings in less than 1 minute).
+
+The same approach is used for things like detecting the P300 potential
+that can be seen when the brain "notices" something new, but this would
+be a longer experiment (since most of us can't notice something new 20
+times a second ).
+
+Here's my rough guess of what would be involved:
+
+1) build a splitter cable to go from a male headphone jack to two
+touch-proof connectors and a female headphone jack.
+
+2) make a wave file with the clicks and upload it to music player that
+runs off a battery (e.g. a phone, so we don't bypass our isolation).
+
+3) hook up the phone to the splitter cable and the splitter cable to a
+pair of headphones and one of the channels on our device.
+
+4) hook up the the remaining EEG channels (RLD in lower forehead,
+positive in upper forehead, two electrodes on the mastoids as negative
+electrodes)
+
+5) play the sound and record the EEG and the synchronized sound track
+from the patch cable.
+
+6) Use the clicks on the soundtrack to chop up the EEG into ~40 ms
+chunks and average them together to get the audiotory brainstem
+response.
