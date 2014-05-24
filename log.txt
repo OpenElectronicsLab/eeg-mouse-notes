@@ -260,7 +260,7 @@ Design ideas included:
   Added LEDs to daughter board controlled by four 74HC595 chips.
   At 560 Ohms, we probably do not want to light up all of the LEDs
     at once, because that will draw a lot of current. We will only
-    light either a yellow or a green per wire, depending on weather
+    light either a yellow or a green per wire, depending on whether
     the wire is intended for use and disconnected (yellow) or connected
     (green) ... channels which are set to SHORTED will not have either
     LED lit.
