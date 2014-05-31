@@ -18,3 +18,16 @@
    or a "gravity well"
  * sessions were 7-13 five-minute runs
 
+# moyes_bci_2012
+ * pong with EEG
+ * one dimension of control
+ * tried alpha and mu for control
+ * seems they used general level of range (8-13Hz),
+   not tightly focused on a specific frequency inside range
+ * tried using SVM to detect p300; not successful
+ * firmware and software on webpage
+ * 75 USD budget
+ * article states "There exists a Modular EEG serial packet data format
+   that is typically used to transmit EEG data over serial"
+ * references medical guidelines:
+   ftp://ansuk.org/pub/clinical_governance/dig_eeg.pdf
