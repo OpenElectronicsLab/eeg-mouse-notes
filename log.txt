@@ -432,7 +432,21 @@ Ideas to try
  * Allow sensitivity and baseline to be specified on command line.
  * Practice.
  * Try narrower bands; may need better/faster bandpass filters.
+ * Consider machine learning? At any point in the process, we could curate
+   a set of training data (e.g. "moving left", "moving right", and "not moving"
+   examples).  We could then pre-process the data in various ways (e.g. FFT or
+   pulling out a few frequencies with filters) and then use this data to train
+   a neural network or similar system (e.g. a SVM).  This may identify features
+   in the data that we are not currently using, but it may be difficult to
+   reverse engineer what features the neural network is using. During the
+   "obstacle course" runs, we can make fairly strong inferences about what the
+   subject is attempting to accomplish.
  * Try designing active electrodes
+ * "There exists a Modular EEG serial packet data format that is typically used
+   to transmit EEG data over serial;" make this format a mode? Quote from:
+   http://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/index.html#design
+ * Create a square-wave, sine-wave generator for test signals at ExG levels
+
 
 Problem list
 ============
