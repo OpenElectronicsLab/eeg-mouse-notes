@@ -446,6 +446,7 @@ Ideas to try
    to transmit EEG data over serial;" make this format a mode? Quote from:
    http://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/index.html#design
  * Create a square-wave, sine-wave generator for test signals at ExG levels
+ * perhaps try to make /wider/ ranges, rather than more narrow ranges
 
 
 Problem list
