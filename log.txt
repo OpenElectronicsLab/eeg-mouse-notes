@@ -415,6 +415,19 @@ Design ideas included:
    some movement could be seen with the foot, even though it passed the
    continuity test. Careful cleaning and re-soldering fixed it.
 
+2014-06-08 Discussed splitting out basic hardware and signal capture code into
+   a separate ExG project, as a number of people seem to be interested in
+   using our hardware as a biopotential amplifier/DAQ for purposes other than
+   controlling the mouse cursor.  Discussed using GDAQRec project as an
+   initial GUI that would be friendlier than the current command line scripts.
+
+2014-06-29 Modified GDAQRec to capture data from a command line script, and
+   verified that we could use this to capture data in soft real time from the
+   rev1 hardware using our existing command line scripts.
+
+2014-07-12 Reviewed some of the math behind bilinear filter design with the
+   goal of adding live filtering to GDAQRec to provide a reasonable preview of
+   an ECG or EEG.
 
 Ideas to try
 ============

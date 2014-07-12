@@ -1,0 +1,120 @@
+\documentclass[a4paper]{article}
+% https://www.writelatex.com/1267010tfjbxp#/3080075/
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{Bilinear filter math notes}
+
+\author{Kendrick, Ace, Eric}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Following Numerical Recipes 3rd ed. by Press et al,
+
+\begin{equation}
+z = e^{-2\pi i f \Delta} = \frac{1+iw}{1-iw} \label{eq:z}
+\end{equation}
+or equivalently
+\begin{equation}
+w = i \left(\frac{1-z}{1+z}\right) \label{eq:w}
+\end{equation}
+Where $\Delta$ is our sampling interval.
+This implies
+\begin{equation}
+w \equiv \tan(\pi f \Delta).
+\end{equation}
+
+We can describe a digital filter as
+\begin{equation}
+y_n = \sum^{M}_{k=0} c_k x_{n-k} + \sum^{N-1}_{j=0} d_j y_{n-j-1}.
+\end{equation}
+Expanding this equation for $N=2$, we have
+\begin{equation}
+y_n = c_0 x_n + c_1 x_{n-1} + c_2 x_{n-2} + d_0 y_{n-1} + d_1 y_{n-2}.\label{eq:expanded_coeficients}
+\end{equation}
+
+Knowing the coefficients $c_k$ and $d_j$ we can calculate the filter's response to a given frequency as
+\begin{equation}
+\mathcal{H}(f) = \frac{\sum^{M}_{k=0} c_k e^{-2\pi i k f \Delta}}{1-\sum^{N-1}_{j=0} d_j e^{-2\pi i (j+1) f \Delta}}.
+\end{equation}
+
+We can rewrite this in terms of $z$ as
+\begin{equation}
+\mathcal{H}(f) = \frac{\sum^{M}_{k=0} c_k z^{-k}}{1-\sum^{N-1}_{j=0} d_j z^{-(j+1)}},
+\end{equation}
+or for $N=M=2$,
+\begin{equation}
+\mathcal{H}(f) = \frac{c_0 + c_1 z^{-1} + c_2 z^{-2}}{1 - d_0 z^{-1} - d_1 z^{-2}}.\label{eq:freq_response}
+\end{equation}
+
+
+We can design the amplitude of a filter response function $\mathcal{H}$ for a band pass filter as
+\begin{equation}
+|\mathcal{H}(f)|^2 = \left(\frac{w^2}{w^2 + a^2}\right)\left(\frac{b^2}{w^2 + b^2}\right).
+\end{equation}
+where
+\begin{equation}
+a = \tan(\pi f_\textrm{high} \Delta)
+\end{equation}
+is our high pass cutoff, and
+\begin{equation}
+b = \tan(\pi f_\textrm{low} \Delta)
+\end{equation}
+is our low pass filter.
+For example, we could choose
+\begin{equation}
+\mathcal{H}(f) = \left(\frac{w}{w - ia}\right)\left(\frac{ib}{w - ib}\right).\label{eq:filter_choice}
+\end{equation}
+We can re-write this as
+\begin{align}
+\mathcal{H}(f) & = \left(\frac{i \left(\frac{1-z}{1+z}\right)}{i \left(\frac{1-z}{1+z}\right) - ia}\right)\left(\frac{ib}{i \left(\frac{1-z}{1+z}\right) - ib}\right) \\
+ & = \left(\frac{ \left(\frac{1-z}{1+z}\right)}{ \left(\frac{1-z}{1+z}\right) - a}\right)\left(\frac{b}{\left(\frac{1-z}{1+z}\right) - b}\right) \\
+ & = \left(\frac{\left(1-z\right)}{ \left(1-z\right) - a(1+z)}\right)\left(\frac{b\left(1+z\right)}{\left(1-z\right) - b\left(1+z\right)}\right) \\
+ & = \left(\frac{1-z}{ 1-z - a -az }\right)\left(\frac{b+bz}{1-z- b-bz}\right) \\
+ & = \frac{b + bz -zb -bz^2}{1 - z - b - bz -z + z^2 +zb + bz^2 -a +za +ab + abz  -az + az^2 + azb + abz^2 } \\
+ & = \frac{b-bz^2}{1 -b -a +ab -2z +2abz +az^2 + abz^2 +z^2 +bz^2} \\
+ & = \frac{b-bz^2}{(1 -b  -a +ab) - (2 +2ab)z + (a + ab + 1 +b )z^2} \\
+ & = \frac{b-bz^2}{(1-a)(1-b) - (2 +2ab)z + (1 + a)(1 + b)z^2} \\
+ & = \frac{bz^{-2}-b}{(1-a)(1-b)z^{-2} - (2 +2ab)z^{-1} + (1 + a)(1 + b)} \\
+ & = \frac{-\frac{b}{(1 + a)(1 + b)}+\frac{b}{(1 + a)(1 + b)}z^{-2}}{ \frac{(1-a)(1-b)}{(1 + a)(1 + b)}z^{-2} - \frac{2 +2ab}{(1 + a)(1 + b)}z^{-1} + 1} \\
+  & = \frac{-\frac{b}{(1 + a)(1 + b)} + (0) z^{-1} + \frac{b}{(1 + a)(1 + b)}z^{-2}}{1  - \frac{2 +2ab}{(1 + a)(1 + b)}z^{-1} - \left(-\frac{(1-a)(1-b)}{(1 + a)(1 + b)}\right)z^{-2}}
+\end{align}
+Comparing this to (\ref{eq:freq_response}), we have
+\begin{align}
+c_0 &= -\frac{b}{(1 + a)(1 + b)} \label{eq:c0}\\
+c_1 &= 0 \\
+c_2 &= \frac{b}{(1 + a)(1 + b)} \\
+d_0 &= \frac{2 +2ab}{(1 + a)(1 + b)} \\
+d_1 &= -\frac{(1-a)(1-b)}{(1 + a)(1 + b)} \label{eq:d1}
+\end{align}
+
+
+Per Press et all, an IIR filter is only stable if all roots of
+\begin{equation}
+z^N - \sum^{N-1}_{j=0} d_j z^{(N-1)-j} = 0,\label{eq:stability}
+\end{equation}
+or in case with $N=2$
+\begin{equation}
+z^2 - (d_0 z + d_1) = 0,
+\end{equation}
+or equivalently
+\begin{equation}
+z^2 - d_0 z - d_1 = 0,
+\end{equation}
+lie withing the unit circle.
+
+\section{todo}
+\begin{itemize}
+\item Restate (\ref{eq:expanded_coeficients}) in terms of (\ref{eq:c0})-(\ref{eq:d1})
+\item Expand steps between (\ref{eq:z})-(\ref{eq:w})
+\item Make choice of (\ref{eq:filter_choice}) less mysterious based on stability.
+\item Explain stability criterion (\ref{eq:stability})
+\end{itemize}
+\end{document}
