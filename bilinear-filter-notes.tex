@@ -95,6 +95,40 @@ d_0 &= \frac{2 +2ab}{(1 + a)(1 + b)} \\
 d_1 &= -\frac{(1-a)(1-b)}{(1 + a)(1 + b)} \label{eq:d1}
 \end{align}
 
+\section{High Pass Filter of order $2 n$}
+The high pass cutoff of the above bandpass filter is unfortunately not very
+steep.  To make a filter with a steeper cutoff, we can choose a squared
+amplitude response with a steeper cut off, for example
+\begin{align}
+    |\mathcal{H}(f)|^2 &= \frac{w^{4n}}{w^{4n} + a^{4n}}.
+\end{align}
+Note that the denominator will be zero when $w^{4n} = -a^{4n} = (-1)^{4n}
+a^{4n}$, i.e. it is a polynomial whose roots are the product of each of the
+$4n$ roots of $-1$ with the conventional (positive real) $4n$-th root of $a$.
+Similarly, the numerator's roots are all $0$.  We can use these observations to
+factor the amplitude response as follows:
+\begin{align}
+    |\mathcal{H}(f)|^2 &= \frac{w^{4n}}{w^{4n} + a^{4n}} \\
+                       &=  \frac{\prod_{j=0}^{4 n - 1}(w - 0)}{\prod_{j=0}^{4 n - 1}\left(w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)\right)} \\
+                       &= \prod_{j=0}^{4 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{j=2n}^{4 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 (4 n - 1 - k)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (8n - 1 - 2 k)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{-i \pi (1 + 2 k)}{4 n}\right)}\right) \\
+                       &= \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)
+                          \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)^{*}.
+\end{align}
+Note that the first term is a rational function of $w$ whose poles (roots of
+the denominator) all lie above the real axis as required for stability.  The
+second term is simply the complex conjugate of the first term.  We thus choose
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right).
+\end{align}
+
 \section{2nd Order High Pass Filter}
 We can design the amplitude of a filter response function $\mathcal{H}$ for a high pass filter as
 \begin{equation}
