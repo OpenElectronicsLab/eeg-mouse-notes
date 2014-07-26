@@ -170,25 +170,25 @@ We next rewrite this equation in terms of $z$, so that
     &= \prod_{j=0}^{n - 1}\frac{(1 - z)^2}
         {(1 - z)^2 - 2 (1 - z)(1 + z) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) + (1 + z)^2 \sqrt[2n]{a}}.
 \end{align}
-For convenience, we let $\alpha = \sqrt[2n]{a}$ and $\beta_j = 2 \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$.
+For convenience, we let $\alpha = \sqrt[2n]{a}$ and $\gamma_j = 2 \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$.
 Continuing with these new variables, we have
 \begin{align}
     \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{(1 - z)^2}
-        {(1 - z)^2 - \beta_j (1 - z)(1 + z) + (1 + z)^2 \alpha} \\
+        {(1 - z)^2 - \gamma_j (1 - z)(1 + z) + (1 + z)^2 \alpha} \\
     &= \prod_{j=0}^{n - 1}\frac{1 - 2z + z^2}
-        {1 - 2z + z^2 - \beta_j + \beta_j z^2 + \alpha + 2z \alpha + z^2 \alpha} \\
+        {1 - 2z + z^2 - \gamma_j + \gamma_j z^2 + \alpha + 2z \alpha + z^2 \alpha} \\
     &= \prod_{j=0}^{n - 1}\frac{z^2 - 2z + 1}
-        {(1 + \alpha + \beta_j)z^2 + 2(\alpha - 1) z + (1 + \alpha - \beta_j)} \\
+        {(1 + \alpha + \gamma_j)z^2 + 2(\alpha - 1) z + (1 + \alpha - \gamma_j)} \\
         &= \prod_{j=0}^{n - 1}\frac{1 - 2z^{-1} + z^{-2}}
-        {(1 + \alpha + \beta_j) - 2(1 - \alpha) z^{-1} - (\beta_j - \alpha - 1)z^{-2}}.
+        {(1 + \alpha + \gamma_j) - 2(1 - \alpha) z^{-1} - (\gamma_j - \alpha - 1)z^{-2}}.
 \end{align}
 Comparing this to (\ref{eq:freq_response}), we have
 \begin{align}
-    c_{j,0} &= \frac{1}{1 + \alpha + \beta_j} \\
-    c_{j,1} &= -\frac{2}{1 + \alpha + \beta_j} \\
-    c_{j,2} &= \frac{1}{1 + \alpha + \beta_j} \\
-    d_{j,0} &= \frac{2-2\alpha}{1 + \alpha + \beta_j} \\
-    d_{j,1} &= \frac{\beta_j - \alpha - 1}{1 + \alpha + \beta_j}.
+    c_{j,0} &= \frac{1}{1 + \alpha + \gamma_j} \\
+    c_{j,1} &= -\frac{2}{1 + \alpha + \gamma_j} \\
+    c_{j,2} &= \frac{1}{1 + \alpha + \gamma_j} \\
+    d_{j,0} &= \frac{2-2\alpha}{1 + \alpha + \gamma_j} \\
+    d_{j,1} &= \frac{\gamma_j - \alpha - 1}{1 + \alpha + \gamma_j}.
 \end{align}
 
 
