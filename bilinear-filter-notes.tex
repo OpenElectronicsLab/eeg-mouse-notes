@@ -5,7 +5,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
 \usepackage[margin=3cm]{geometry}
 
 \title{Bilinear filter math notes}
@@ -112,26 +111,31 @@ a^{4n}$, i.e. it is a polynomial whose roots are the product of each of the
 $4n$ roots of $-1$ with the conventional (positive real) $4n$-th root of $a$.
 Similarly, the numerator's roots are all $0$.  We can use these observations to
 factor the amplitude response as follows:
+
 \begin{align}
-    |\mathcal{H}(f)|^2 &= \frac{w^{4n}}{w^{4n} + a^{4n}} \\
-                       &=  \frac{\prod_{j=0}^{4 n - 1}(w - 0)}{\prod_{j=0}^{4 n - 1}\left(w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)\right)} \\
-                       &= \prod_{j=0}^{4 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
-                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-                          \prod_{j=2n}^{4 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
-                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 (4 n - 1 - k)}{4 n}\right)}\right) \\
-                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (8n - 1 - 2 k)}{4 n}\right)}\right) \\
-                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{-i \pi (1 + 2 k)}{4 n}\right)}\right) \\
-                       &= \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)
-                          \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)^{*}.
+    |\mathcal{H}(f)|^2 &= \frac{w^{4n}}{w^{4n} + a^{4n}} \label{eq:high_pass_factor1}\\
+                       &=  \frac{\prod_{j=0}^{4 n - 1}(w - 0)}{\prod_{j=0}^{4 n - 1}\left(w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)\right)} \qquad\textrm{(see section \ref{roots})} \label{eq:high_pass_factor2}\\
+                       &= \prod_{j=0}^{4 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{j=2n}^{4 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 (4 n - 1 - k))}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (8n - 1 - 2 k)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi 8 n}{4 n} + \frac{i \pi (- 1 - 2 k)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(i 2 \pi\right) \exp\left(\frac{i \pi (- 1 - 2 k)}{4 n}\right)}\right) \\
+                       &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+                          \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{-i \pi (1 + 2 k)}{4 n}\right)}\right) \\
+                       &= \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)
+                          \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)^{*}.
 \end{align}
 Note that the first term is a rational function of $w$ whose poles (roots of
 the denominator) all lie above the real axis as required for stability.  The
 second term is simply the complex conjugate of the first term.  We thus choose
 \begin{align}
-    \mathcal{H}(f) &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right).
+    \mathcal{H}(f) &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right).
 \end{align}
 
 We now factor this function into quadratic terms, as cascaded quadratic filters
@@ -139,38 +143,46 @@ can be more stable than a single higher order filter of the same total order.
 To do this, we note the symmetry of the roots across the imaginary axis and
 pair each root with its mirror.
 \begin{align}
-    \mathcal{H}(f) &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
-        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-           \prod_{j=n}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
-        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-           \prod_{k=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 (2 n - 1 - k)}{4 n}\right)}\right) \\
-        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-           \prod_{k=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(i \pi-\frac{i \pi (1 + 2 k)}{4 n}\right)}\right) \\
-        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-           \prod_{k=0}^{n - 1} \left(\frac{w}{w + \sqrt[4n]{a}\exp\left(-\frac{i \pi (1 + 2 k)}{4 n}\right)}\right) \\
+    \mathcal{H}(f) &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{j=n}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{k=0}^{n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 (2 n - 1 - k)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{k=0}^{n - 1} \left(\frac{w}{w - a\exp\left(i \pi-\frac{i \pi (1 + 2 k)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{k=0}^{n - 1} \left(\frac{w}{w + a\exp\left(-\frac{i \pi (1 + 2 k)}{4 n}\right)}\right) \\
         &= \prod_{j=0}^{n - 1}
-           \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
-           \left(\frac{w}{w + \sqrt[4n]{a}\exp\left(-\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+           \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \left(\frac{w}{w + a\exp\left(-\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
         &= \prod_{j=0}^{n - 1}
-           \frac{w^2}{w^2 - w \sqrt[4n]{a} \left(\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right) -
-           \exp\left(-\frac{i \pi (1 + 2 j)}{4 n}\right)\right) - \sqrt[2n]{a}} \\
+           \frac{w^2}{w^2 - w a \left(\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right) -
+           \exp\left(-\frac{i \pi (1 + 2 j)}{4 n}\right)\right) - a^2} \label{eq:high_pass_quadratic1} \\
         &= \prod_{j=0}^{n - 1}
-           \frac{w^2}{w^2 - 2 i w \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}}.
+           \frac{w^2}{w^2 - 2 i w a \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - a^2} \qquad\textrm{(see section \ref{sin})}. \label{eq:high_pass_quadratic2}
 \end{align}
-We next rewrite this equation in terms of $z$, so that
+
+
+For convenience, we let $\alpha = a^2$ and $\gamma_j = 2 a \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$, and thus 
 \begin{align}
     \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{w^2}
-        {w^2 - 2 i w \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}} \\
-    &= \prod_{j=0}^{n - 1}\frac{\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2}
-        {\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2 - 2 i \left(i\left(\frac{1 - z}{1 + z}\right)\right) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}} \\
-    &= \prod_{j=0}^{n - 1}\frac{-\left(\frac{1 - z}{1 + z}\right)^2}
-        {-\left(\frac{1 - z}{1 + z}\right)^2 + 2 \left(\frac{1 - z}{1 + z}\right) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}} \\
-    &= \prod_{j=0}^{n - 1}\frac{\left(\frac{1 - z}{1 + z}\right)^2}
-        {\left(\frac{1 - z}{1 + z}\right)^2 - 2 \left(\frac{1 - z}{1 + z}\right) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) + \sqrt[2n]{a}} \\
-    &= \prod_{j=0}^{n - 1}\frac{(1 - z)^2}
-        {(1 - z)^2 - 2 (1 - z)(1 + z) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) + (1 + z)^2 \sqrt[2n]{a}}.
+        {w^2 - i w \gamma_j - \alpha}.
 \end{align}
-For convenience, we let $\alpha = \sqrt[2n]{a}$ and $\gamma_j = 2 \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$.
+We next rewrite this equation in terms of $z$, so that
+
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{w^2}
+        {w^2 - i w \gamma_j - \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2}
+        {\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2 - i \left(i\left(\frac{1 - z}{1 + z}\right)\right) \gamma_j - \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{-\left(\frac{1 - z}{1 + z}\right)^2}
+        {-\left(\frac{1 - z}{1 + z}\right)^2 +  \left(\frac{1 - z}{1 + z}\right) \gamma_j - \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{\left(\frac{1 - z}{1 + z}\right)^2}
+        {\left(\frac{1 - z}{1 + z}\right)^2 -  \left(\frac{1 - z}{1 + z}\right) \gamma_j +  \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{(1 - z)^2}
+        {(1 - z)^2 - (1 - z)(1 + z) \gamma_j + (1 + z)^2 \alpha}.
+\end{align}
+
 Continuing with these new variables, we have
 \begin{align}
     \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{(1 - z)^2}
@@ -179,10 +191,18 @@ Continuing with these new variables, we have
         {1 - 2z + z^2 - \gamma_j + \gamma_j z^2 + \alpha + 2z \alpha + z^2 \alpha} \\
     &= \prod_{j=0}^{n - 1}\frac{z^2 - 2z + 1}
         {(1 + \alpha + \gamma_j)z^2 + 2(\alpha - 1) z + (1 + \alpha - \gamma_j)} \\
+    &= \prod_{j=0}^{n - 1}\frac{1 - 2z^{-1} + z^{-2}}
+        {(1 + \alpha + \gamma_j) + 2(\alpha - 1) z^{-1} + (1 + \alpha - \gamma_j) z^{-2}} \\
         &= \prod_{j=0}^{n - 1}\frac{1 - 2z^{-1} + z^{-2}}
-        {(1 + \alpha + \gamma_j) - 2(1 - \alpha) z^{-1} - (\gamma_j - \alpha - 1)z^{-2}}.
+        {(1 + \alpha + \gamma_j) - 2(1 - \alpha) z^{-1} - (\gamma_j - \alpha - 1)z^{-2}}\\
+        &= \prod_{j=0}^{n - 1}\frac{\frac{1}{1 + \alpha + \gamma_j} + \frac{-2}{1 + \alpha + \gamma_j}z^{-1} + \frac{1}{1 + \alpha + \gamma_j}z^{-2}}
+        {1 - \frac{2(1 - \alpha)}{1 + \alpha + \gamma_j} z^{-1} - \frac{(\gamma_j - \alpha - 1)}{1 + \alpha + \gamma_j}z^{-2}}.
 \end{align}
-Comparing this to (\ref{eq:freq_response}), we have
+We compare this with (\ref{eq:freq_response}),
+\begin{equation*}
+\mathcal{H}(f) = \frac{c_0 + c_1 z^{-1} + c_2 z^{-2}}{1 - d_0 z^{-1} - d_1 z^{-2}},
+\end{equation*}
+we have
 \begin{align}
     c_{j,0} &= \frac{1}{1 + \alpha + \gamma_j} \\
     c_{j,1} &= -\frac{2}{1 + \alpha + \gamma_j} \\
@@ -207,11 +227,74 @@ z^2 - d_0 z - d_1 = 0,
 \end{equation}
 lie withing the unit circle.
 
+\section{Notes}
+\subsection{Roots}
+\label{roots}
+Explanation of equation \ref{eq:high_pass_factor1} to \ref{eq:high_pass_factor2}:
+
+$w^4 - a = 0$
+
+$w^4 = a$
+
+4 roots of $w^4$
+
+$w = \sqrt[4]{a}$
+
+$w = -\sqrt[4]{a}$
+
+$w = i\sqrt[4]{a}$
+
+$w = -i\sqrt[4]{a}$
+
+Or, in general:
+
+$w = \sqrt[4]{1}\sqrt[4]{a}$
+
+$w = \exp(i 2 \pi k/4)\sqrt[4]{a}$
+
+Also works for the nth power:
+
+$w^n - a = 0$
+
+$w = \exp(i 2 \pi k/n)\sqrt[n]{a}$
+
+And for $w^n + a$ (rather than -a)
+
+$w^n + a = 0$
+
+$w^n - (-a) = 0$
+
+$w = \exp(i 2 \pi k/n)\sqrt[n]{-a}$
+
+$w = \exp(i 2 \pi k/n)\sqrt[n]{-1}\sqrt[n]{a}$
+
+$w = \exp(i 2 \pi k/n)\exp(i \pi/n) \sqrt[n]{a}$
+
+$w = \exp(i \pi (1 + 2 k)/n)\sqrt[n]{a}$
+
+\subsection{Sine}
+\label{sin}
+Explanation of equation \ref{eq:high_pass_quadratic1} to \ref{eq:high_pass_quadratic2}:
+
+$\sin(\theta) = \frac{e^{i \theta} - e^{-i\theta}}{2 i}$
+
+$\exp(i\theta) = \cos(\theta) + i \sin(\theta)$
+
+$\exp(-i\theta) = \cos(-\theta) + i \sin(-\theta)
+= \cos(\theta) - i \sin(\theta)$
+
+$\exp(i\theta) - \exp(-i\theta) = \cos(\theta) + i \sin(\theta) - (\cos(\theta) - i \sin(\theta)) = 2 i \sin(\theta)$
+
+
 \section{todo}
 \begin{itemize}
 \item Restate (\ref{eq:expanded_coeficients}) in terms of (\ref{eq:c0})-(\ref{eq:d1})
 \item Expand steps between (\ref{eq:z})-(\ref{eq:w})
 \item Make choice of (\ref{eq:filter_choice}) less mysterious based on stability.
 \item Explain stability criterion (\ref{eq:stability})
+\item Add section on low pass filter of order $4n$.
 \end{itemize}
 \end{document}
+
+
+
