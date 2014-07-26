@@ -192,38 +192,6 @@ Comparing this to (\ref{eq:freq_response}), we have
 \end{align}
 
 
-\section{2nd Order High Pass Filter}
-We can design the amplitude of a filter response function $\mathcal{H}$ for a high pass filter as
-\begin{equation}
-|\mathcal{H}(f)|^2 = \left(\frac{w^2}{w^2 + a^2}\right)^2 = \frac{w^4}{w^4 + 2 w^2a^2 + a^4}.
-\end{equation}
-where
-\begin{equation}
-a = \tan(\pi f_\textrm{high} \Delta)
-\end{equation}
-is our high pass cutoff.  To satisfy this and the stability criterion, we can choose
-\begin{equation}
-\mathcal{H}(f) = \left(\frac{w}{w - ia}\right)^2.
-\end{equation}
-We can re-write this as
-\begin{align}
-\mathcal{H}(f) & = \left(\frac{i \left(\frac{1-z}{1+z}\right)}{i \left(\frac{1-z}{1+z}\right) - ia}\right)^2 \\
- & = \left(\frac{ \left(\frac{1-z}{1+z}\right)}{ \left(\frac{1-z}{1+z}\right) - a}\right)^2 \\
- & = \left(\frac{1-z}{ (1-z) - a(1+z)}\right)^2 \\
- & = \left(\frac{1-z}{ (1-a) - (1+a)z}\right)^2 \\
- & = \frac{1-2 z + z^2}{ (1-a)^2 - 2 (1-a)(1+a)z + (1+a)^2 z^2 } \\
- & = \frac{\frac{1}{(1+a)^2}-\frac{2}{(1+a)^2} z + \frac{1}{(1+a)^2} z^2}{ \frac{(1-a)^2}{(1+a)^2} - 2 \frac{(1-a)}{(1+a)}z + z^2 } \\
-& = \frac{\frac{1}{(1+a)^2} -\frac{2}{(1+a)^2} z^{-1} + \frac{1}{(1+a)^2} z^{-2}}{ 1 - 2 \frac{(1-a)}{(1+a)}z^{-1} + \frac{(1-a)^2}{(1+a)^2} z^{-2} }
-\end{align}
-Comparing this to (\ref{eq:freq_response}), we have
-\begin{align}
-c_0 &= \frac{1}{(1+a)^2} \\
-c_1 &= -\frac{2}{(1+a)^2} \\
-c_2 &= \frac{1}{(1+a)^2} \\
-d_0 &= 2 \frac{(1-a)}{(1+a)} \\
-d_1 &= -\frac{(1-a)^2}{(1+a)^2}
-\end{align}
-
 \section{Stability}
 Per Press et all, an IIR filter is only stable if all roots of
 \begin{equation}
