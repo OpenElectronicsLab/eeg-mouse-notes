@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage[margin=3cm]{geometry}
 
 \title{Bilinear filter math notes}
 
@@ -97,11 +98,15 @@ d_1 &= -\frac{(1-a)(1-b)}{(1 + a)(1 + b)} \label{eq:d1}
 
 \section{High Pass Filter of order $2 n$}
 The high pass cutoff of the above bandpass filter is unfortunately not very
-steep.  To make a filter with a steeper cutoff, we can choose a squared
+steep.  To make a more selective filter we can choose a squared
 amplitude response with a steeper cut off, for example
 \begin{align}
     |\mathcal{H}(f)|^2 &= \frac{w^{4n}}{w^{4n} + a^{4n}}.
 \end{align}
+
+We will next find a function $\mathcal{H}(f)$ that has this squared amplitude
+and has poles (roots in the denominator) with positive imaginary components,
+which is required for stability of the filter.
 Note that the denominator will be zero when $w^{4n} = -a^{4n} = (-1)^{4n}
 a^{4n}$, i.e. it is a polynomial whose roots are the product of each of the
 $4n$ roots of $-1$ with the conventional (positive real) $4n$-th root of $a$.
@@ -128,6 +133,64 @@ second term is simply the complex conjugate of the first term.  We thus choose
 \begin{align}
     \mathcal{H}(f) &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right).
 \end{align}
+
+We now factor this function into quadratic terms, as cascaded quadratic filters
+can be more stable than a single higher order filter of the same total order.
+To do this, we note the symmetry of the roots across the imaginary axis and
+pair each root with its mirror.
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{j=n}^{2 n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{k=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 (2 n - 1 - k)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{k=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(i \pi-\frac{i \pi (1 + 2 k)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1} \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \prod_{k=0}^{n - 1} \left(\frac{w}{w + \sqrt[4n]{a}\exp\left(-\frac{i \pi (1 + 2 k)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1}
+           \left(\frac{w}{w - \sqrt[4n]{a}\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
+           \left(\frac{w}{w + \sqrt[4n]{a}\exp\left(-\frac{i \pi (1 + 2 j)}{4 n}\right)}\right) \\
+        &= \prod_{j=0}^{n - 1}
+           \frac{w^2}{w^2 - w \sqrt[4n]{a} \left(\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right) -
+           \exp\left(-\frac{i \pi (1 + 2 j)}{4 n}\right)\right) - \sqrt[2n]{a}} \\
+        &= \prod_{j=0}^{n - 1}
+           \frac{w^2}{w^2 - 2 i w \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}}.
+\end{align}
+We next rewrite this equation in terms of $z$, so that
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{w^2}
+        {w^2 - 2 i w \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}} \\
+    &= \prod_{j=0}^{n - 1}\frac{\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2}
+        {\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2 - 2 i \left(i\left(\frac{1 - z}{1 + z}\right)\right) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}} \\
+    &= \prod_{j=0}^{n - 1}\frac{-\left(\frac{1 - z}{1 + z}\right)^2}
+        {-\left(\frac{1 - z}{1 + z}\right)^2 + 2 \left(\frac{1 - z}{1 + z}\right) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) - \sqrt[2n]{a}} \\
+    &= \prod_{j=0}^{n - 1}\frac{\left(\frac{1 - z}{1 + z}\right)^2}
+        {\left(\frac{1 - z}{1 + z}\right)^2 - 2 \left(\frac{1 - z}{1 + z}\right) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) + \sqrt[2n]{a}} \\
+    &= \prod_{j=0}^{n - 1}\frac{(1 - z)^2}
+        {(1 - z)^2 - 2 (1 - z)(1 + z) \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right) + (1 + z)^2 \sqrt[2n]{a}}.
+\end{align}
+For convenience, we let $\alpha = \sqrt[2n]{a}$ and $\beta_j = 2 \sqrt[4n]{a} \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$.
+Continuing with these new variables, we have
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{(1 - z)^2}
+        {(1 - z)^2 - \beta_j (1 - z)(1 + z) + (1 + z)^2 \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{1 - 2z + z^2}
+        {1 - 2z + z^2 - \beta_j + \beta_j z^2 + \alpha + 2z \alpha + z^2 \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{z^2 - 2z + 1}
+        {(1 + \alpha + \beta_j)z^2 + 2(\alpha - 1) z + (1 + \alpha - \beta_j)} \\
+        &= \prod_{j=0}^{n - 1}\frac{1 - 2z^{-1} + z^{-2}}
+        {(1 + \alpha + \beta_j) - 2(1 - \alpha) z^{-1} - (\beta_j - \alpha - 1)z^{-2}}.
+\end{align}
+Comparing this to (\ref{eq:freq_response}), we have
+\begin{align}
+    c_{j,0} &= \frac{1}{1 + \alpha + \beta_j} \\
+    c_{j,1} &= -\frac{2}{1 + \alpha + \beta_j} \\
+    c_{j,2} &= \frac{1}{1 + \alpha + \beta_j} \\
+    d_{j,0} &= \frac{2-2\alpha}{1 + \alpha + \beta_j} \\
+    d_{j,1} &= \frac{\beta_j - \alpha - 1}{1 + \alpha + \beta_j}.
+\end{align}
+
 
 \section{2nd Order High Pass Filter}
 We can design the amplitude of a filter response function $\mathcal{H}$ for a high pass filter as
