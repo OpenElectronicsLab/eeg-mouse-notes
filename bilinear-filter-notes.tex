@@ -227,37 +227,37 @@ We note that the denominator is the same as equation (\ref{eq:high_pass_factor1}
 \end{align}
 From there we see that we can skip ahead to a form similar to (\ref{eq:highpass_before_z}); letting $\alpha = a^2$ and $\gamma_j = 2 a \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$, and thus 
 \begin{align}
-    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{a^2}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{\alpha }
         {w^2 - i w \gamma_j - \alpha}\label{eq:lowpass_before_z}.
 \end{align}
 Again, next rewrite this equation in terms of $z$, so that
 
 \begin{align}
-    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{a^2}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{\alpha }
         {w^2 - i w \gamma_j - \alpha} \\
-    &= \prod_{j=0}^{n - 1}\frac{a^2}
+    &= \prod_{j=0}^{n - 1}\frac{\alpha }
         {\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2 - i \left(i\left(\frac{1 - z}{1 + z}\right)\right) \gamma_j - \alpha} \\
-    &= \prod_{j=0}^{n - 1}\frac{a^2}
+    &= \prod_{j=0}^{n - 1}\frac{\alpha }
         {-\left(\frac{1 - z}{1 + z}\right)^2 +  \left(\frac{1 - z}{1 + z}\right) \gamma_j - \alpha} \\
-    &= \prod_{j=0}^{n - 1}\frac{-a^2}
+    &= \prod_{j=0}^{n - 1}\frac{-\alpha }
         {\left(\frac{1 - z}{1 + z}\right)^2 -  \left(\frac{1 - z}{1 + z}\right) \gamma_j +  \alpha} \\
-    &= \prod_{j=0}^{n - 1}\frac{-a^2(1 + z)^2}
+    &= \prod_{j=0}^{n - 1}\frac{-\alpha (1 + z)^2}
         {(1 - z)^2 - (1 - z)(1 + z) \gamma_j + (1 + z)^2 \alpha}.
 \end{align}
 
 Continuing with these new variables, we have
 \begin{align}
-    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{-a^2(1 + z)^2}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{-\alpha (1 + z)^2}
         {(1 - z)^2 - \gamma_j (1 - z)(1 + z) + (1 + z)^2 \alpha} \\
-    &= \prod_{j=0}^{n - 1}\frac{-a^2 - 2a^2z - a^2z^2}
+    &= \prod_{j=0}^{n - 1}\frac{-\alpha  - 2\alpha z - \alpha z^2}
         {1 - 2z + z^2 - \gamma_j + \gamma_j z^2 + \alpha + 2z \alpha + z^2 \alpha} \\
-    &= \prod_{j=0}^{n - 1}\frac{-a^2z^2 - 2a^2z - a^2}
+    &= \prod_{j=0}^{n - 1}\frac{-\alpha z^2 - 2\alpha z - \alpha }
         {(1 + \alpha + \gamma_j)z^2 + 2(\alpha - 1) z + (1 + \alpha - \gamma_j)} \\
-    &= \prod_{j=0}^{n - 1}\frac{-a^2 - 2a^2 z^{-1} - a^2 z^{-2}}
+    &= \prod_{j=0}^{n - 1}\frac{-\alpha  - 2\alpha  z^{-1} - \alpha  z^{-2}}
         {(1 + \alpha + \gamma_j) + 2(\alpha - 1) z^{-1} + (1 + \alpha - \gamma_j) z^{-2}} \\
-    &= \prod_{j=0}^{n - 1}\frac{(-a^2) + (-2a^2) z^{-1} + (-a^2)z^{-2}}
+    &= \prod_{j=0}^{n - 1}\frac{(-\alpha ) + (-2\alpha ) z^{-1} + (-\alpha )z^{-2}}
         {(1 + \alpha + \gamma_j) - 2(1 - \alpha) z^{-1} - (\gamma_j - \alpha - 1)z^{-2}}\\
-    &= \prod_{j=0}^{n - 1}\frac{\frac{-a^2}{1 + \alpha + \gamma_j} + \frac{-2 a^2}{1 + \alpha + \gamma_j}z^{-1} + \frac{-a^2}{1 + \alpha + \gamma_j}z^{-2}}
+    &= \prod_{j=0}^{n - 1}\frac{\frac{-\alpha }{1 + \alpha + \gamma_j} + \frac{-2 \alpha }{1 + \alpha + \gamma_j}z^{-1} + \frac{-\alpha }{1 + \alpha + \gamma_j}z^{-2}}
         {1 - \frac{2(1 - \alpha)}{1 + \alpha + \gamma_j} z^{-1} - \frac{(\gamma_j - \alpha - 1)}{1 + \alpha + \gamma_j}z^{-2}}.
 \end{align}
 We compare this with (\ref{eq:freq_response}),
@@ -266,9 +266,9 @@ We compare this with (\ref{eq:freq_response}),
 \end{equation*}
 we have
 \begin{align}
-    c_{j,0} &= -\frac{a^2}{1 + \alpha + \gamma_j} \\
-    c_{j,1} &= -\frac{2 a^2}{1 + \alpha + \gamma_j} \\
-    c_{j,2} &= -\frac{a^2}{1 + \alpha + \gamma_j} \\
+    c_{j,0} &= -\frac{\alpha }{1 + \alpha + \gamma_j} \\
+    c_{j,1} &= -\frac{2 \alpha }{1 + \alpha + \gamma_j} \\
+    c_{j,3} &= -\frac{\alpha }{1 + \alpha + \gamma_j} \\
     d_{j,0} &= \frac{2-2\alpha}{1 + \alpha + \gamma_j} \\
     d_{j,1} &= \frac{\gamma_j - \alpha - 1}{1 + \alpha + \gamma_j}.
 \end{align}
