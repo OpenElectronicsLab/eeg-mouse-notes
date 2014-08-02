@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[margin=3cm]{geometry}
+\usepackage{hyperref}
 
 \title{Bilinear filter math notes}
 
@@ -95,13 +96,15 @@ d_0 &= \frac{2 +2ab}{(1 + a)(1 + b)} \\
 d_1 &= -\frac{(1-a)(1-b)}{(1 + a)(1 + b)} \label{eq:d1}
 \end{align}
 
-\section{High Pass Filter of order $2 n$}
+\section[High Pass Filter]{High Pass Filter of order $2 n$}
 The high pass cutoff of the above bandpass filter is unfortunately not very
 steep.  To make a more selective filter we can choose a squared
-amplitude response with a steeper cut off, for example
+amplitude response with a steeper cut off, for example the response of a $2n$-th order butterworth filter (a filter with a maximally flat response in the the passband, see \url{http://en.wikipedia.org/wiki/Butterworth_filter} and perhaps \url{http://www.recordingblogs.com/sa/tabid/88/Default.aspx?topic=Butterworth+filter})
+
 \begin{align}
     |\mathcal{H}(f)|^2 &= \frac{w^{4n}}{w^{4n} + a^{4n}}.
 \end{align}
+(Note that for a true Butterworth filter this should be written in terms of the frequency $\omega$ rather than our transformed frequency $w$; by using $w$ (which goes to infinity as $w$ goes to the Nyquest frequency) our filter will be compressed as the frequency approaches the Nyquest frequency, and thus have a cut-in that is sharper and earlier than a true Butterworth filter.)
 
 We will next find a function $\mathcal{H}(f)$ that has this squared amplitude
 and has poles (roots in the denominator) with positive imaginary components,
@@ -129,7 +132,7 @@ factor the amplitude response as follows:
                        &= \prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)
                           \prod_{k=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{-i \pi (1 + 2 k)}{4 n}\right)}\right) \\
                        &= \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)
-                          \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)^{*}.
+                          \left(\prod_{j=0}^{2 n - 1} \left(\frac{w}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)^{*}\label{eq:highpass_factor_n}.
 \end{align}
 Note that the first term is a rational function of $w$ whose poles (roots of
 the denominator) all lie above the real axis as required for stability.  The
@@ -166,7 +169,7 @@ pair each root with its mirror.
 For convenience, we let $\alpha = a^2$ and $\gamma_j = 2 a \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$, and thus 
 \begin{align}
     \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{w^2}
-        {w^2 - i w \gamma_j - \alpha}.
+        {w^2 - i w \gamma_j - \alpha}\label{eq:highpass_before_z}.
 \end{align}
 We next rewrite this equation in terms of $z$, so that
 
@@ -207,6 +210,65 @@ we have
     c_{j,0} &= \frac{1}{1 + \alpha + \gamma_j} \\
     c_{j,1} &= -\frac{2}{1 + \alpha + \gamma_j} \\
     c_{j,2} &= \frac{1}{1 + \alpha + \gamma_j} \\
+    d_{j,0} &= \frac{2-2\alpha}{1 + \alpha + \gamma_j} \\
+    d_{j,1} &= \frac{\gamma_j - \alpha - 1}{1 + \alpha + \gamma_j}.
+\end{align}
+
+\section{LowPass}
+A lowpass filter can be derived by taking 1 minus the highpass filter:
+\begin{align}
+    |\mathcal{H}(f)|^2 &= 1 - \frac{w^{4n}}{w^{4n} + a^{4n}} = \frac{w^{4n} + a^{4n}}{w^{4n} + a^{4n}} - \frac{w^{4n}}{w^{4n} + a^{4n}} =  \frac{a^{4n}}{w^{4n} + a^{4n}} 
+\end{align}
+We note that the denominator is the same as equation (\ref{eq:high_pass_factor1}) and the numerator is in terms of $a$ rather than $w$. Thus we can transform it directly to a form similar to (\ref{eq:highpass_factor_n}):
+\begin{align}
+    |\mathcal{H}(f)|^2 
+                           &= \left(\prod_{j=0}^{2 n - 1} \left(\frac{a}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)
+                          \left(\prod_{j=0}^{2 n - 1} \left(\frac{a}{w - a\exp\left(\frac{i \pi (1 + 2 j)}{4 n}\right)}\right)\right)^{*}\label{eq:lowpass_factor_n}.
+\end{align}
+From there we see that we can skip ahead to a form similar to (\ref{eq:highpass_before_z}); letting $\alpha = a^2$ and $\gamma_j = 2 a \sin\left(\frac{\pi (1 + 2 j)}{4 n}\right)$, and thus 
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{a^2}
+        {w^2 - i w \gamma_j - \alpha}\label{eq:lowpass_before_z}.
+\end{align}
+Again, next rewrite this equation in terms of $z$, so that
+
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{a^2}
+        {w^2 - i w \gamma_j - \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{a^2}
+        {\left(i\left(\frac{1 - z}{1 + z}\right)\right)^2 - i \left(i\left(\frac{1 - z}{1 + z}\right)\right) \gamma_j - \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{a^2}
+        {-\left(\frac{1 - z}{1 + z}\right)^2 +  \left(\frac{1 - z}{1 + z}\right) \gamma_j - \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{-a^2}
+        {\left(\frac{1 - z}{1 + z}\right)^2 -  \left(\frac{1 - z}{1 + z}\right) \gamma_j +  \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{-a^2(1 + z)^2}
+        {(1 - z)^2 - (1 - z)(1 + z) \gamma_j + (1 + z)^2 \alpha}.
+\end{align}
+
+Continuing with these new variables, we have
+\begin{align}
+    \mathcal{H}(f) &= \prod_{j=0}^{n - 1}\frac{-a^2(1 + z)^2}
+        {(1 - z)^2 - \gamma_j (1 - z)(1 + z) + (1 + z)^2 \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{-a^2 - 2a^2z - a^2z^2}
+        {1 - 2z + z^2 - \gamma_j + \gamma_j z^2 + \alpha + 2z \alpha + z^2 \alpha} \\
+    &= \prod_{j=0}^{n - 1}\frac{-a^2z^2 - 2a^2z - a^2}
+        {(1 + \alpha + \gamma_j)z^2 + 2(\alpha - 1) z + (1 + \alpha - \gamma_j)} \\
+    &= \prod_{j=0}^{n - 1}\frac{-a^2 - 2a^2 z^{-1} - a^2 z^{-2}}
+        {(1 + \alpha + \gamma_j) + 2(\alpha - 1) z^{-1} + (1 + \alpha - \gamma_j) z^{-2}} \\
+    &= \prod_{j=0}^{n - 1}\frac{(-a^2) + (-2a^2) z^{-1} + (-a^2)z^{-2}}
+        {(1 + \alpha + \gamma_j) - 2(1 - \alpha) z^{-1} - (\gamma_j - \alpha - 1)z^{-2}}\\
+    &= \prod_{j=0}^{n - 1}\frac{\frac{-a^2}{1 + \alpha + \gamma_j} + \frac{-2 a^2}{1 + \alpha + \gamma_j}z^{-1} + \frac{-a^2}{1 + \alpha + \gamma_j}z^{-2}}
+        {1 - \frac{2(1 - \alpha)}{1 + \alpha + \gamma_j} z^{-1} - \frac{(\gamma_j - \alpha - 1)}{1 + \alpha + \gamma_j}z^{-2}}.
+\end{align}
+We compare this with (\ref{eq:freq_response}),
+\begin{equation*}
+\mathcal{H}(f) = \frac{c_0 + c_1 z^{-1} + c_2 z^{-2}}{1 - d_0 z^{-1} - d_1 z^{-2}},
+\end{equation*}
+we have
+\begin{align}
+    c_{j,0} &= -\frac{a^2}{1 + \alpha + \gamma_j} \\
+    c_{j,1} &= -\frac{2 a^2}{1 + \alpha + \gamma_j} \\
+    c_{j,2} &= -\frac{a^2}{1 + \alpha + \gamma_j} \\
     d_{j,0} &= \frac{2-2\alpha}{1 + \alpha + \gamma_j} \\
     d_{j,1} &= \frac{\gamma_j - \alpha - 1}{1 + \alpha + \gamma_j}.
 \end{align}
@@ -295,6 +357,3 @@ $\exp(i\theta) - \exp(-i\theta) = \cos(\theta) + i \sin(\theta) - (\cos(\theta) 
 \item Add section on low pass filter of order $4n$.
 \end{itemize}
 \end{document}
-
-
-
