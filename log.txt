@@ -429,6 +429,14 @@ Design ideas included:
    goal of adding live filtering to GDAQRec to provide a reasonable preview of
    an ECG or EEG.
 
+2014-09-27 Noted that seeedstudio.com has a much lower price for four layer
+   boards than goldphoenixpcb.com; we may want to consider this for the shield.
+   We continued to work on the schematic for the OpenHardwareExG shield.  Our
+   Plan is for the boards to autodetect whether multiple boards are stacked.
+   When there is nothing in pin 2 of the underside connector, the signal on
+   the Master wire will be high. This will also be used to drive CLSEL high
+   when the board is Master and low when it is Slave.
+
 Ideas to try
 ============
  * More literature review
@@ -505,3 +513,5 @@ Eventually
 
  * consider half-height single-width headers to avoid them sticking too
    high above the case and being vulnerable.
+
+
