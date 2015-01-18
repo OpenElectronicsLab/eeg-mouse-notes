@@ -437,6 +437,11 @@ Design ideas included:
    the Master wire will be high. This will also be used to drive CLSEL high
    when the board is Master and low when it is Slave.
 
+2015-01-01 OpenHardwareExG_Shield is starting to take shape. We are looking at
+   how small we can make a 4 layer Arduino shield. Each 1/4" lengthwise strip
+   of board will cost about 3 USD per board. We are sacrificing some clarity in
+   routing in order to reduce board size to minimize costs.
+
 Ideas to try
 ============
  * More literature review
