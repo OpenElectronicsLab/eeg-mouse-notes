@@ -1,0 +1,54 @@
+* foo
+
+* input source
+*vin vcc gnd dc 0v ac 0v pulse(0 9 100us 10ms)
+vin vcc gnd dc 0v ac 0v pwl(0 0 300us 6.5 1.6ms 5)
+
+*adum6000 has internal resistance
+radum vcc vcc_adum 2
+c1 vcc_adum gnd 10uf
+c2 vcc_adum gnd 100nf
+*L4
+r0 vcc_adum vcc_smooth 0.1
+
+
+c7 vcc_smooth c7a 330uf
+r7 c7a gnd 0.15
+
+
+c3  trigger gnd 100nf
+r1  vcc_smooth trigger 68
+r2  vcc_smooth divided 10.0k
+r3  divided gnd 8.45k
+*c4  divided gnd 10uf
+xu2  trigger gnd divided tl431
+
+* xu2  trigger divided gnd tl431bidbzr
+* xu1  vcc gnd trigger z0109mnt1g
+
+
+*----------------------------------------------
+*http://www.edaboard.com/thread319.html#post968
+*hi guys,here's the model for TL431 from Intusoft:
+*SRC=TL431;TL431;Voltage Ref.;;
+*SYM=TL431
+.SUBCKT TL431 7 6 11
+* K A FDBK
+.MODEL DCLAMP D (IS=13.5N RS=25M N=1.59
++ CJO=45P VJ=.75 M=.302 TT=50.4N BV=34V IBV=1MA)
+V1 1 6 2.495
+R1 6 2 15.6
+C1 2 6 .5U
+R2 2 3 100
+C2 3 4 .08U
+R3 4 6 10
+G2 6 8 3 6 1.73
+D1 5 8 DCLAMP
+D2 7 8 DCLAMP
+V4 5 6 2
+G1 6 2 1 11 0.11
+.ENDS
+*----------------------------------------------
+
+
+.end
