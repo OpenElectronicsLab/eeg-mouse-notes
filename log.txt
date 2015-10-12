@@ -468,6 +468,14 @@ Ideas to try
    "obstacle course" runs, we can make fairly strong inferences about what the
    subject is attempting to accomplish.
  * Try designing active electrodes
+   - we will go with the design with resistors to potentially handle the small
+     voltages of the eeg signal. We can solder in 0 ohm resistors for ECG use,
+     and test which gives a better signal for EEG use (resistors may allow
+     amplification of smaller signals but introduce amp noise).
+   - at a quick glance, amps with integrated resistors do not seem to have
+     low enough bias currents, but more hunting might prove otherwise.
+   - using the back of the circuit board itself may be better than attaching
+     the circuit to an Ag/AgCl electrode.
  * "There exists a Modular EEG serial packet data format that is typically used
    to transmit EEG data over serial;" make this format a mode? Quote from:
    http://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/index.html#design
