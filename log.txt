@@ -468,10 +468,8 @@ Ideas to try
    "obstacle course" runs, we can make fairly strong inferences about what the
    subject is attempting to accomplish.
  * Try designing active electrodes
-   - we will go with the design with resistors to potentially handle the small
-     voltages of the eeg signal. We can solder in 0 ohm resistors for ECG use,
-     and test which gives a better signal for EEG use (resistors may allow
-     amplification of smaller signals but introduce amp noise).
+   - The active electrode design is based loosely on the LMP7721 reference
+     design.  We may try using less expensive amplifiers if this works well.
    - at a quick glance, amps with integrated resistors do not seem to have
      low enough bias currents, but more hunting might prove otherwise.
    - using the back of the circuit board itself may be better than attaching
