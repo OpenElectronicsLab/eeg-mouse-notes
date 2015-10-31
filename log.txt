@@ -442,6 +442,13 @@ Design ideas included:
    of board will cost about 3 USD per board. We are sacrificing some clarity in
    routing in order to reduce board size to minimize costs.
 
+2015-10-31 Continued to work on active electrode. Did initial component
+   selection and placement. Experiemented with 0.1 inch pitch conenctor, but
+   a shrouded connector is larger than all of the other components on the board
+   combined. Found a promising 1 mm pitch connector (DF50A-3P-1H, mates with
+   DF50A-3S-1C with DF50-2830SCFA or DF50K-2830SCFA pins); we will try adding
+   this conenctor next time.
+
 Ideas to try
 ============
  * More literature review
