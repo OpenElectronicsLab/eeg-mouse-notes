@@ -486,7 +486,15 @@ Ideas to try
    http://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/index.html#design
  * Create a square-wave, sine-wave generator for test signals at ExG levels
  * perhaps try to make /wider/ ranges, rather than more narrow ranges
-
+ * Record EEGs from all three of us from a series of tasks (Penny et al 1999
+   and 2000) and look for tasks which can be reliably distinguished for all
+   three of us.
+ * Try to different electrodes to compare signal quality.  Question: how to
+   define a "gold standard" signal for comparison (silver-silver chloride?
+   Add a signal with a second set of electrodes?)
+ * Consider BMJ xmas edition article: A comparison of the EEG response to various
+   songs (NIN compared to christmas music, for example... or xmas music when heard
+   in the time period from Halloween to Xmas).
 
 Problem list
 ============
