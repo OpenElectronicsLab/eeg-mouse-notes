@@ -1,0 +1,56 @@
+* foo
+
+* input source
+vin vcc gnd DC 3.3v
+
+* ***************
+* begin of ladder
+* ***************
+R00 vcc SIGA 0
+R99 SIGB gnd 0
+
+R17 SIGA IN8N 15k
+
+R18 IN8N IN8P 100
+R19 IN8P IN7N 100
+
+R20 IN7N IN7P 100
+R21 IN7P IN6N 100
+
+R22 IN6N IN6P 100
+R23 IN6P IN5N 100
+
+R24 IN5N IN5P 100
+R25 IN5P IN4N 100
+
+R26 IN4N IN4P 100
+R27 IN4P IN3N 100
+
+R28 IN3N IN3P 100
+R29 IN3P IN2N 100
+
+R30 IN2N IN2P 100
+R31 IN2P IN1N 100
+
+R32 IN1N IN1P 100
+
+R33 IN1P SIGB 15k
+* ***************
+* end of ladder
+* ***************
+
+
+RB1 SRB IN1N 5.22k
+RB2 SRB IN2N 5.22k
+RB3 SRB IN3N 5.22k
+RB4 SRB IN4N 5.22k
+RB5 SRB IN5N 5.22k
+RB6 SRB IN6N 5.22k
+RB7 SRB IN7N 5.22k
+RB8 SRB IN8N 5.22k
+
+.control
+tran .01s 1s
+.endc
+
+.end
