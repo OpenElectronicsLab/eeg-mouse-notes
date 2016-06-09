@@ -12,7 +12,14 @@
 # IN8P: V6 (purple) - mid axillary line, same level with V4 and V5.
 # IN1N .. IN8N: LL (red) - Left Leg (All negative inputs are tied together).
 
-electrodes <- read.csv("ecg-electrodes.csv",
+# sample rate (samples per second)
+rate <- 500
+samplefile <- "ecg-electrodes.csv";
+
+#rate <- 250
+#samplefile <- "../data/eric_12_lead_ecg_20160604T122800Z.csv";
+
+electrodes <- read.csv(samplefile,
     col.names=c("magic","leadoffP","leadoffN","GPIO1","GPIO2","GPIO3","GPIO4",
                 "RA","LA","V1","V2","V3","V4","V5","V6"));
 
@@ -36,8 +43,6 @@ V6 <- electrodes$V6 - (electrodes$LA + electrodes$RA + electrodes$LL)/3
 
 unfiltered_leads <- data.frame(I, II, III, aVR, aVL, aVF, V1, V2, V3, V4, V5, V6);
 
-# sample rate (samples per second)
-rate <- 500
 
 # times
 t <- (0:(N - 1)) / rate;
