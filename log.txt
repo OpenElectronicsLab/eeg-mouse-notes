@@ -449,12 +449,29 @@ Design ideas included:
    DF50A-3S-1C with DF50-2830SCFA or DF50K-2830SCFA pins); we will try adding
    this conenctor next time.
 
+Firmware improvements
+============
+ * verify firmware still works with conditional compilation
+   * rev0, rev1 hardware not tested yet
+   * the nice LEDs only exist on rev1, test conditional compile
+   * the OpenHardwareExG_Shield does not use:
+     * PIN_CLKSEL
+     * PIN_START
+     * IPIN_RESET
+     * IPIN_PWDN
+ * add listener to both serial ports,
+   * send on whichever port pings in
+ * make speed configurable
+ * make shared_negative_electrode configurable
+ * make output format configurable
+ * "There exists a Modular EEG serial packet data format that is typically used
+   to transmit EEG data over serial;" make this format a mode? Quote from:
+   http://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/index.html#design
+
 Ideas to try
 ============
  * More literature review
  * Make HTML for ExG board and ADS129x-Breakout
- * JTag, openocd demo
- * Logic Sniffer, ols-0.9.7 demo
  * Try recording samples from both the rev0 and rev1 boards to compare
    signal quality.
  * Add real time spectrogram
@@ -474,9 +491,6 @@ Ideas to try
    reverse engineer what features the neural network is using. During the
    "obstacle course" runs, we can make fairly strong inferences about what the
    subject is attempting to accomplish.
- * "There exists a Modular EEG serial packet data format that is typically used
-   to transmit EEG data over serial;" make this format a mode? Quote from:
-   http://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/index.html#design
  * Create a square-wave, sine-wave generator for test signals at ExG levels
  * perhaps try to make /wider/ ranges, rather than more narrow ranges
  * Record EEGs from all three of us from a series of tasks (Penny et al 1999
@@ -510,6 +524,8 @@ Problem list
 
 Eventually
 ==========
+ * JTag, openocd demo
+ * Logic Sniffer, ols-0.9.7 demo
 
  * replace pins with jumpers in rev1 schematic
  * replace L with FB (device - filter) for ferrite beads in rev1 sch
