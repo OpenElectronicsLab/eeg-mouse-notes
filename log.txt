@@ -452,18 +452,14 @@ Design ideas included:
 Firmware improvements
 ============
  * verify firmware still works with conditional compilation
-   * rev0, rev1 hardware not tested yet
-   * the nice LEDs only exist on rev1, test conditional compile
-   * the OpenHardwareExG_Shield does not use:
-     * PIN_CLKSEL
-     * PIN_START
-     * IPIN_RESET
-     * IPIN_PWDN
+   * rev0 hardware not tested yet
  * add listener to both serial ports,
    * send on whichever port pings in
  * make speed configurable
  * make shared_negative_electrode configurable
  * make output format configurable
+ * make timestamp a float, or otherwise avoid wrap-around
+   * move timestamp into regular frame, adjust frame-parser
  * "There exists a Modular EEG serial packet data format that is typically used
    to transmit EEG data over serial;" make this format a mode? Quote from:
    http://people.ece.cornell.edu/land/courses/ece4760/FinalProjects/s2012/cwm55/cwm55_mj294/index.html#design
@@ -534,3 +530,5 @@ Eventually
 
  * discuss firmware merging with Chris Rorden
 
+ * Firmware: support ADS demo boards connected to Arduinos or something
+   * http://nl.mouser.com/search/ProductDetail.aspx?R=0virtualkey0virtualkeyADS1292RECG-FE
