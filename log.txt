@@ -451,13 +451,16 @@ Design ideas included:
 
 Firmware improvements
 ============
+ * cleanup the ads1298.h, split out 1298 and 1299 and look at 129x
  * verify firmware still works with conditional compilation
    * rev0 hardware not tested yet
  * add listener to both serial ports,
    * send on whichever port pings in
  * make speed configurable
  * make shared_negative_electrode configurable
+ * verify top SPS of text format
  * make output format configurable
+ * make a 16k SPS binary format (1298 can do 32k; support that on rev0?)
  * make timestamp a float, or otherwise avoid wrap-around
    * move timestamp into regular frame, adjust frame-parser
  * "There exists a Modular EEG serial packet data format that is typically used
