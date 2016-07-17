@@ -449,6 +449,9 @@ Design ideas included:
    DF50A-3S-1C with DF50-2830SCFA or DF50K-2830SCFA pins); we will try adding
    this conenctor next time.
 
+2016-07-17 OpenHardwareExG_Shield project was updated to KiCAD v4 ... it seems
+   that multi-line text items were misaligned in the process.
+
 Firmware improvements
 ============
  * cleanup the ads1298.h, split out 1298 and 1299 and look at 129x
@@ -504,6 +507,7 @@ Ideas to try
 
 Problem list
 ============
+ * Upgrading to KiCAD v4 might mess up multi-line text items on PCB Silk.
  * Improve control of cursor.
  * separate out view and model logic in window.pl.
  * seek and destroy dash-in-filename bug in Arduino IDE.
